@@ -1,7 +1,10 @@
-import React from 'react';
+import { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+
 
 const httpLink = createHttpLink({
   uri: '/graphql'
@@ -37,7 +40,17 @@ const App = () => {
     <ApolloProvider client={client}>
       <Router>
         <div className='flex-column justify-flex-start min-100-vh'>
+          <Navbar
+            currentDisplay={currentDisplay}
+            setCurrentDisplay={setCurrentDisplay}
+          />
+          <div className='container'>
+            <Switch>
 
+
+            </Switch>
+          </div>
+          <Footer />
         </div>
       </Router>
     </ApolloProvider>

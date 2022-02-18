@@ -20,24 +20,16 @@ const userSchema = new Schema(
             required: true,
             minlength: 8
         },
-        favoriteSystem: {
-            type: Schema.Types.ObjectId,
-            ref: 'Console'
-        },
-        favoriteGame: {
-            type: Schema.Types.ObjectId,
-            ref: 'Game'
-        },
-        completedGames: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'Game'
-            }
-        ],
         reviews: [
             {
                 type: Schema.Types.ObjectId,
                 ref: 'Review'
+            }
+        ],
+        posts: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Post'
             }
         ],
         friends: [
@@ -71,8 +63,12 @@ userSchema.virtual('friendCount').get(function () {
     return this.friends.length;
 });
 
-userSchema.virtual('completedGameCount').get(function () {
-    return this.completedGames.length;
+userSchema.virtual('postCount').get(function () {
+    return this.posts.length;
+});
+
+userSchema.virtual('reviewCount').get(function () {
+    return this.reviews.length;
 });
 
 const User = model('User', userSchema);
