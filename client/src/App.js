@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import Sidebar from './components/Sidebar';
+import Feed from './components/Feed';
+import Widgets from './components/Widgets';
+import './App.css';
 
 
 const httpLink = createHttpLink({
@@ -39,18 +41,10 @@ const App = () => {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className='flex-column justify-flex-start min-100-vh'>
-          <Navbar
-            currentDisplay={currentDisplay}
-            setCurrentDisplay={setCurrentDisplay}
-          />
-          <div className='container'>
-            <Switch>
-
-
-            </Switch>
-          </div>
-          <Footer />
+        <div className='app'>
+          <Sidebar />
+          <Feed />
+          <Widgets />
         </div>
       </Router>
     </ApolloProvider>
@@ -58,3 +52,17 @@ const App = () => {
 }
 
 export default App;
+
+{/* <div className='flex-column justify-flex-start min-100-vh'>
+<Navbar
+  currentDisplay={currentDisplay}
+  setCurrentDisplay={setCurrentDisplay}
+/>
+<div className='container'>
+  <Switch>
+
+
+  </Switch>
+</div>
+<Footer />
+</div> */}
