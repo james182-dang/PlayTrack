@@ -7,3 +7,10 @@ body {
   height: 100vh;
   width: 100vw;
 }
+
+.container {
+  flex: 0.57;
+  border-right: var(--twitter-background) 1px solid;
+  min-width: fit-content;
+  overflow-y: scroll;
+}

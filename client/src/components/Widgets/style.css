@@ -1,6 +1,7 @@
 .widgets {
   flex: 0.3;
   overflow-y: scroll;
+  background-color: #282828;
 }
 
 .widgets::-webkit-scrollbar {
@@ -36,7 +37,7 @@
   margin-left: 20px;
   margin-right: 20px;
   padding: 20px;
-  background-color: #f5f8fa;
+  background-color: #B3B3B3;
   border-radius: 20px;
 }
 

@@ -5,6 +5,8 @@ import { setContext } from '@apollo/client/link/context';
 import Sidebar from './components/Sidebar';
 import Feed from './components/Feed';
 import Widgets from './components/Widgets';
+import LoginForm from './components/LoginForm';
+import SignupForm from './components/SignupForm';
 import './App.css';
 
 
@@ -32,18 +34,18 @@ const App = () => {
 
   const [currentDisplay, setCurrentDisplay] = useState('Home');
 
-  const showDisplay = () => {
-    switch (currentDisplay) {
-
-    }
-  };
-
   return (
     <ApolloProvider client={client}>
       <Router>
         <div className='app'>
           <Sidebar />
-          <Feed />
+            <div className='container'>
+              <Switch>
+                <Route exact path='/' component={Feed} />
+                <Route exact path='/login' component={LoginForm} />
+                <Route exact path='/signup' component={SignupForm} />
+              </Switch>
+            </div>
           <Widgets />
         </div>
       </Router>
@@ -52,17 +54,3 @@ const App = () => {
 }
 
 export default App;
-
-{/* <div className='flex-column justify-flex-start min-100-vh'>
-<Navbar
-  currentDisplay={currentDisplay}
-  setCurrentDisplay={setCurrentDisplay}
-/>
-<div className='container'>
-  <Switch>
-
-
-  </Switch>
-</div>
-<Footer />
-</div> */}

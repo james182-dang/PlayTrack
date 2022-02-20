@@ -6,21 +6,40 @@
 }
 
 .sidebarOption:hover {
-  background-color: #e8f5fe;
-  color: var(--twitter-color);
+  color: #FFD700;
   transition: color 100ms ease-out;
 }
 
 .sidebarOption > .MuiSvgIcon-root {
   padding: 20px;
+  color: #fff;
 }
 
 .sidebarOption > h2 {
+  color: #fff;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 1rem;
   margin-right: 20px;
+}
+
+.sidebarOption > h2:hover {
+  transition: color 0.5s;
+  color: #FFD700;
 }
 
 .sidebarOption--active {
   color: var(--twitter-color);
 }
+
+header nav ul li a {
+  font-size: 1rem;
+  color: #e9e8e8;
+  text-decoration: none;
+}
+header nav ul li a:hover {
+  transition: color 0.5s;
+  color: #FFD700; 
+}
+header nav ul li a:focus {
+  color: #FFD700; 
+} 
