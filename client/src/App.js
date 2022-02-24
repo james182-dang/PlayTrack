@@ -4,6 +4,9 @@ import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@ap
 import { setContext } from '@apollo/client/link/context';
 import Sidebar from './components/Sidebar';
 import Feed from './components/Feed';
+import Explore from './pages/Explore';
+import Reviews from './pages/Reviews';
+import Profile from './components/Profile';
 import Widgets from './components/Widgets';
 import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
@@ -32,8 +35,6 @@ const client = new ApolloClient({
 
 const App = () => {
 
-  const [currentDisplay, setCurrentDisplay] = useState('Home');
-
   return (
     <ApolloProvider client={client}>
       <Router>
@@ -42,8 +43,12 @@ const App = () => {
             <div className='container'>
               <Switch>
                 <Route exact path='/' component={Feed} />
+                <Route exact path='/feed' component={Feed} />
+                <Route exact path='/explore' component={Explore} />
+                <Route exact path='/profile' component={Profile} />
                 <Route exact path='/login' component={LoginForm} />
                 <Route exact path='/signup' component={SignupForm} />
+                <Route exact path='/reviews' component={Reviews} />
               </Switch>
             </div>
           <Widgets />

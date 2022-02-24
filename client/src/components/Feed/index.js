@@ -10,9 +10,9 @@ function Feed() {
     return (
         <div className='feed'>
             <div className='feed__header'>
-                <h2>Home</h2>
+                <h2>Feed</h2>
             </div>
-            <PostBox />
+            <div className='feed__posts'>
             {posts.map((post) => (
                 <Post
                   username={post.username}
@@ -22,7 +22,13 @@ function Feed() {
                   image={post.image}
                 />
             ))}
+            </div>
+
+            <footer>
+                <PostBox />
+            </footer>
         </div>
+
     );
 }
 
