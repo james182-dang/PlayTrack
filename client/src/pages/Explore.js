@@ -106,8 +106,20 @@ const Explore = () => {
                     </Col>
                 <Col xs={12} md={4}>
                     <Dropdown>
-                        <Dropdown.Toggle variant='success' id='dropdown'>
-                            Specific system?
+                        <Dropdown.Toggle variant='success' id='dropdownRating'>
+                            Rating
+                        </Dropdown.Toggle>
+
+                        <Dropdown.Menu>
+                            <Dropdown.Item>E</Dropdown.Item>
+                            <Dropdown.Item>T</Dropdown.Item>
+                            <Dropdown.Item>M</Dropdown.Item>
+                            <Dropdown.Item>AO</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
+                    <Dropdown>
+                        <Dropdown.Toggle variant='success' id='dropdownSys'>
+                            System
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu>
