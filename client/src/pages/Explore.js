@@ -5,6 +5,11 @@ import { getGameToken } from '../utils/API';
 import { Form, Button, Dropdown, Col } from 'react-bootstrap';
 import { saveGameIds, getSavedGameIds } from '../utils/localStorage';
 import Auth from '../utils/auth';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
 
 const Explore = () => {
     
@@ -13,6 +18,23 @@ const Explore = () => {
     const [searchInput, setSearchInput] = useState('');
 
     const [savedGameIds, setSavedGameIds] = useState(getSavedGameIds());
+
+    const [currentOptions, setCurrentOptions] = useState('');
+
+    const showOptions = () => {
+        switch (currentOptions) {
+            case 'NintendoPortable':
+                return <NintendoPortableList />;
+            case 'NintendoConsole':
+                return <NintendoConsoleList />;
+            case 'SonyPortable':
+                return <SonyPortableList />;
+            case 'SonyConsole':
+                return <SonyConsoleList />;
+            case 'Microsoft':
+                return <MicrosoftConsoleList />;
+        }
+    };
 
     //eslint-disable-next-line
     // const [saveGame, { error }] = useMutation(SAVE_GAME);
@@ -89,6 +111,13 @@ const Explore = () => {
         }
     };
 
+    const handleGameSearch = async (consoleTypeOption, manufacturerOption) => {
+        if (consoleTypeOption.value === 'console' && manufacturerOption === 'Nintendo') {
+            return <NintendoConsoleList />;
+        } else if (consoleTypeOption.value === 'portable' && manufacturerOption === 'Nintendo') {
+            return <NintendoPortableList />;
+        }
+    }
     return (
         <div>
             <h1>Search for Games</h1>
@@ -96,45 +125,59 @@ const Explore = () => {
                 <Form.Row>
                     <Col xs={12} md={8}>
                         <Form.Control
-                          name='searchInput'
-                          value={searchInput}
-                          onChange={(e) => setSearchInput(e.target.value)}
-                          type='text'
-                          size='lg'
-                          placeholder='Search Games'
+                            name='searchInput'
+                            value={searchInput}
+                            onChange={(e) => setSearchInput(e.target.value)}
+                            type='text'
+                            size='lg'
+                            placeholder='Search Games'
                         />
                     </Col>
-                <Col xs={12} md={4}>
-                    <Dropdown>
-                        <Dropdown.Toggle variant='success' id='dropdownRating'>
-                            Rating
-                        </Dropdown.Toggle>
 
-                        <Dropdown.Menu>
-                            <Dropdown.Item>E</Dropdown.Item>
-                            <Dropdown.Item>T</Dropdown.Item>
-                            <Dropdown.Item>M</Dropdown.Item>
-                            <Dropdown.Item>AO</Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
-                    <Dropdown>
-                        <Dropdown.Toggle variant='success' id='dropdownSys'>
-                            System
-                        </Dropdown.Toggle>
-
-                        <Dropdown.Menu>
-                            <Dropdown.Item>NES</Dropdown.Item>
-                            <Dropdown.Item>SNES</Dropdown.Item>
-                            <Dropdown.Item>N64</Dropdown.Item>
-                            <Dropdown.Item>Gamecube</Dropdown.Item>
-                            <Dropdown.Item>DS</Dropdown.Item>
-                            <Dropdown.Item>3DS</Dropdown.Item>
-                            <Dropdown.Item>Wii</Dropdown.Item>
-                            <Dropdown.Item>Nintendo Switch</Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
-                </Col>
+                    <FormControl>
+                        <FormLabel id="ratingOption">Rating</FormLabel>
+                        <RadioGroup
+                            row
+                            aria-labelledby="demo-row-radio-buttons-group-label"
+                            name="row-radio-buttons-group"
+                        >
+                            <FormControlLabel value="Everyone" control={<Radio />} label="Everyone" />
+                            <FormControlLabel value="Teen" control={<Radio />} label="Teen" />
+                            <FormControlLabel value="Mature" control={<Radio />} label="Mature" />
+                        </RadioGroup>
+                    </FormControl>
                 </Form.Row>
+
+                <Form.Row>
+                    <FormControl>
+                        <FormLabel id="consoleTypeOption">Type</FormLabel>
+                        <RadioGroup
+                            row
+                            aria-labelledby="demo-row-radio-buttons-group-label"
+                            name="row-radio-buttons-group"
+                        >
+                            <FormControlLabel value="Console" control={<Radio />} label="Console" />
+                            <FormControlLabel value="Portable" control={<Radio />} label="Portable" />
+                        </RadioGroup>
+                    </FormControl>
+                </Form.Row>
+
+                <Form.Row>
+                    <FormControl>
+                        <FormLabel id="manufacturerOption">Manufacturers</FormLabel>
+                        <RadioGroup
+                            row
+                            aria-labelledby="demo-row-radio-buttons-group-label"
+                            name="row-radio-buttons-group"
+                        >
+                            <FormControlLabel value="Nintendo" control={<Radio />} label="Nintendo" />
+                            <FormControlLabel value="Sony" control={<Radio />} label="Sony" />
+                            <FormControlLabel value="Microsoft" control={<Radio />} label="Microsoft" />
+                        </RadioGroup>
+                    </FormControl>
+                </Form.Row>
+
+
             </Form>
         </div>
     );
