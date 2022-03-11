@@ -9,6 +9,7 @@ import MilitaryTechSharpIcon from '@mui/icons-material/MilitaryTechSharp';
 import PowerIcon from '@mui/icons-material/Power';
 import BoltIcon from '@mui/icons-material/Bolt';
 import PowerOffIcon from '@mui/icons-material/PowerOff';
+import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 
 
 function Sidebar(props) {
@@ -21,6 +22,9 @@ function Sidebar(props) {
                     </Link>
                     <Link to='/explore'>
                         <SidebarOption Icon={MapSharpIcon} text='Explore' />
+                    </Link>
+                    <Link to='/connect'>
+                        <SidebarOption Icon={EmojiPeopleIcon} text='Connect' />
                     </Link>
                     <Link to='/reviews'>
                         <SidebarOption Icon={NewspaperSharpIcon} text='Reviews' />

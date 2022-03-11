@@ -21,20 +21,20 @@ const Explore = () => {
 
     const [currentOptions, setCurrentOptions] = useState('');
 
-    const showOptions = () => {
-        switch (currentOptions) {
-            case 'NintendoPortable':
-                return <NintendoPortableList />;
-            case 'NintendoConsole':
-                return <NintendoConsoleList />;
-            case 'SonyPortable':
-                return <SonyPortableList />;
-            case 'SonyConsole':
-                return <SonyConsoleList />;
-            case 'Microsoft':
-                return <MicrosoftConsoleList />;
-        }
-    };
+    // const showOptions = () => {
+    //     switch (currentOptions) {
+    //         case 'NintendoPortable':
+    //             return <NintendoPortableList />;
+    //         case 'NintendoConsole':
+    //             return <NintendoConsoleList />;
+    //         case 'SonyPortable':
+    //             return <SonyPortableList />;
+    //         case 'SonyConsole':
+    //             return <SonyConsoleList />;
+    //         case 'Microsoft':
+    //             return <MicrosoftConsoleList />;
+    //     }
+    // };
 
     //eslint-disable-next-line
     // const [saveGame, { error }] = useMutation(SAVE_GAME);
@@ -112,11 +112,11 @@ const Explore = () => {
     };
 
     const handleGameSearch = async (consoleTypeOption, manufacturerOption) => {
-        if (consoleTypeOption.value === 'console' && manufacturerOption === 'Nintendo') {
-            return <NintendoConsoleList />;
-        } else if (consoleTypeOption.value === 'portable' && manufacturerOption === 'Nintendo') {
-            return <NintendoPortableList />;
-        }
+        // if (consoleTypeOption.value === 'console' && manufacturerOption === 'Nintendo') {
+        //     return <NintendoConsoleList />;
+        // } else if (consoleTypeOption.value === 'portable' && manufacturerOption === 'Nintendo') {
+        //     return <NintendoPortableList />;
+        // }
     }
     return (
         <div>
