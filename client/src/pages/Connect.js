@@ -72,7 +72,12 @@ const Connect = () => {
 
     return (
         <div>
-            <h1>Connect</h1>
+            <div className='header'>
+                <h2>
+                    Connect
+                </h2>
+            </div>
+
 
             <Form onSubmit={handleFormSubmit}>
                 <Form.Row>

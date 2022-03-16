@@ -6,13 +6,19 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  border-bottom: 1px solid var(--twitter-backgroung);
+  border-bottom: 1px solid var(--twitter-background);
 }
 .post__footer {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
+  border-bottom: 1px solid black;
 }
+
+.post__header {
+    border-top: 1px solid black;
+}
+
 .post__badge {
   font-size: 14px !important;
   color: var(--twitter-color);

@@ -1,7 +1,12 @@
 .postBox {
+  border-top: 8px solid var(--twitter-background);
   border-bottom: 8px solid var(--twitter-background);
   padding-right: 10px;
   justify-content: center;
+  bottom: 0;
+  width: 54.56%;
+  position: fixed;
+  background-color: white;
 }
 
 .postBox > form {

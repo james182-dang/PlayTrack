@@ -14,3 +14,18 @@ body {
   min-width: fit-content;
   overflow-y: scroll;
 }
+
+.header {
+  position: sticky;
+  top: 0;
+  background-color: #282828;
+  z-index: 100;
+  border: 1px solid var(--twitter-background);
+  padding: 15px 20px;
+  color: white;
+}
+
+.searchBar {
+  margin-left: 150px;
+  margin-top: 15px;
+}

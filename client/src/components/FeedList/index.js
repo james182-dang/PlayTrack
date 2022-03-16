@@ -7,7 +7,7 @@ import { useQuery } from '@apollo/client';
 import { QUERY_POSTS, QUERY_ME_BASIC } from '../../utils/queries';
 import Auth from '../../utils/auth';
 
-function Feed() {
+function FeedList() {
 
     const { loading, data } = useQuery(QUERY_POSTS);
 
@@ -20,9 +20,6 @@ function Feed() {
 
     return (
         <div className='feed'>
-            <div className='feed__header'>
-                <h2>Feed</h2>
-            </div>
             <div className={`feed__posts`}>
                 {loading ? (
                     <div>Loading...</div>
@@ -31,12 +28,12 @@ function Feed() {
                 )}
             </div>
 
-            <footer>
-                <PostBox className='bottom 0'/>
+            <footer className='feed__footer'>
+                <PostBox />
             </footer>
         </div>
 
     );
 }
 
-export default Feed;
+export default FeedList;

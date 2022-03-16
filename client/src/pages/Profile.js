@@ -1,10 +1,10 @@
 import { Redirect, useParams } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
-import { ADD_FRIEND } from '../../utils/mutations';
-import { QUERY_USER, QUERY_ME } from '../../utils/queries';
-import FriendList from '../FriendList';
-import Auth from '../../utils/auth';
-import './style.css';
+import { ADD_FRIEND } from '../utils/mutations';
+import { QUERY_USER, QUERY_ME } from '../utils/queries';
+import FriendList from '../components/FriendList';
+import PostList from '../components/PostList';
+import Auth from '../utils/auth';
 
 const Profile = () => {
     const [addFriend] = useMutation(ADD_FRIEND);
@@ -22,6 +22,14 @@ const Profile = () => {
         return <Redirect to='/profile' />;
     }
 
+    if (!user?.username) {
+        return (
+            <h4>
+                You need to be logged in to see this page.
+            </h4>
+        )
+    }
+
     const handleClick = async () => {
         try {
             await addFriend({
@@ -34,18 +42,23 @@ const Profile = () => {
 
     return (
         <div className='profile'>
-            <div className='profile__header'>
+            <div className='header'>
                 <h2>
-                    {userParam ? `${user.username}'s ` : 'your'} profile.
+                    {userParam ? `${user.username}'s ` : 'Your'} profile
                 </h2>
-
+            </div>
+            <div>
                 {userParam && (
                     <button onClick={handleClick}>
-                        Add Friend
+                        Follow {`${user.username}`}.
                     </button>
                 )}
-
             </div>
+
+            <div>
+                <PostList posts={user.posts} />
+            </div>
+
 
             <div>
                 <FriendList

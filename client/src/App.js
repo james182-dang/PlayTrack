@@ -3,11 +3,12 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import Sidebar from './components/Sidebar';
-import Feed from './components/Feed';
+import Feed from './pages/Feed';
+import SinglePost from './pages/SinglePost';
 import Explore from './pages/Explore';
 import Connect from './pages/Connect';
 import Reviews from './pages/Reviews';
-import Profile from './components/Profile';
+import Profile from './pages/Profile';
 import Widgets from './components/Widgets';
 import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
@@ -45,9 +46,11 @@ const App = () => {
               <Switch>
                 <Route exact path='/' component={Feed} />
                 <Route exact path='/feed' component={Feed} />
+                <Route exact path='/post/:id' component={SinglePost} />
                 <Route exact path='/explore' component={Explore} />
                 <Route exact path='/connect' component={Connect} />
                 <Route exact path='/profile' component={Profile} />
+                <Route exact path='/profile/:username?' component={Profile} />
                 <Route exact path='/login' component={LoginForm} />
                 <Route exact path='/signup' component={SignupForm} />
                 <Route exact path='/reviews' component={Reviews} />

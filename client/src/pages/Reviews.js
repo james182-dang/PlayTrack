@@ -13,9 +13,11 @@ const Reviews = () => {
 
     return (
         <div>
-            <h1>Reviews</h1>
-
-            <p>Your Reviews</p>
+            <div className='header'>
+                <h2>
+                    Reviews
+                </h2>
+            </div>
 
             <p>Reviews for Games you know</p>
 
