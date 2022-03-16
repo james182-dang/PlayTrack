@@ -17,8 +17,6 @@ const Explore = () => {
 
     const [savedGameIds, setSavedGameIds] = useState(getSavedGameIds());
 
-    const [currentOptions, setCurrentOptions] = useState('');
-
     //eslint-disable-next-line
     // const [saveGame, { error }] = useMutation(SAVE_GAME);
 
@@ -40,23 +38,17 @@ const Explore = () => {
                 throw new Error('Something went wrong...');
             }
 
-            const { items } = await response.json();
+            const { result } = await response.json();
 
-            const gameData = items.map((item) => ({
+            const gameData = result?.map((game) => ({
                 
-                // THIS
-                // MUST
-                // BE
-                // FILLED
-                // IN
-                // WITH
-                // API
-                // DATA
-                // DONT
-                // FORGET
+                gameId: game.id,
+                name: game.name,
+                cover: game.cover.url,
 
             }));
 
+            setSearchedGames(gameData);
             setSearchInput('');
         } catch (err) {
             console.error(err);
@@ -121,6 +113,26 @@ const Explore = () => {
               </Col>
             </Form.Row>
           </Form>
+
+              <h2>
+                  {searchedGames?.length
+                    ? `Viewing ${searchedGames.length} results:`
+                    : 'Search for a game to begin'}
+              </h2>
+              <CardColumns>
+                  {searchedGames?.map((game) => {
+                      return (
+                          <Card key={game.gameId} border='dark'>
+                              {game.cover ? (
+                                  <Card.Img src={game.cover} alt={`The cover for ${game.name}`} variant='top' />
+                              ) : null}
+                              <Card.Body>
+                                  <Card.Title>{game.name}</Card.Title>
+                              </Card.Body>
+                          </Card>
+                      )
+                  })}
+              </CardColumns>
         </div>
     );
 }

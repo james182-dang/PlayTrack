@@ -19,7 +19,7 @@ export const getGame = (searchInput) => {
             },
             body: `
                 search "${searchInput}";
-                fields name;`
+                fields name,cover.url;`
         })
     });
 };
