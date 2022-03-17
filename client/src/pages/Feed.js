@@ -14,7 +14,7 @@ const Feed = props => {
 
     return (
         <div className='feed'>
-            <div className='header'>
+            <div className='myHeader'>
                 <h2 style={{ color: 'white' }}>Feed</h2>
             </div>
 

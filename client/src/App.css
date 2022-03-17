@@ -15,7 +15,7 @@ body {
   overflow-y: scroll;
 }
 
-.header {
+.myHeader {
   position: sticky;
   top: 0;
   background-color: #282828;

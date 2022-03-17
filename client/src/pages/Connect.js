@@ -72,7 +72,7 @@ const Connect = () => {
 
     return (
         <div>
-            <div className='header'>
+            <div className='myHeader'>
                 <h2>
                     Connect
                 </h2>

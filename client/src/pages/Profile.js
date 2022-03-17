@@ -42,7 +42,7 @@ const Profile = () => {
 
     return (
         <div className='profile'>
-            <div className='header'>
+            <div className='myHeader'>
                 <h2>
                     {userParam ? `${user.username}'s ` : 'Your'} profile
                 </h2>

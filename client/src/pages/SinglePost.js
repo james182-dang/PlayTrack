@@ -15,7 +15,7 @@ const SinglePost = props => {
 
     return (
         <div className='singlePost'>
-            <div className='header'>
+            <div className='myHeader'>
                 <h2>Post</h2>
             </div>
             <div>

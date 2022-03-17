@@ -13,7 +13,7 @@ const Reviews = () => {
 
     return (
         <div>
-            <div className='header'>
+            <div className='myHeader'>
                 <h2>
                     Reviews
                 </h2>

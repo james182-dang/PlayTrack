@@ -3,6 +3,7 @@
     align-items: center;
     cursor: pointer;
     border-radius: 30px;
+    text-decoration: none;
 }
 
 .sidebarOption:hover {
@@ -20,6 +21,7 @@
   font-weight: 700;
   font-size: 1rem;
   margin-right: 20px;
+  text-decoration: none;
 }
 
 .sidebarOption > h2:hover {
