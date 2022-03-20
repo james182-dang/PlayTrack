@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
-import { getGame } from '../utils/API';
+import { getGame, getSpecificGame } from '../utils/API';
 import { saveGameIds, getSavedGameIds } from '../utils/localStorage';
 import Auth from '../utils/auth';
 import { Container, Col, Form, Button, CardColumns } from 'react-bootstrap';
@@ -120,17 +121,19 @@ const Explore = () => {
                         ? `Viewing ${searchedGames.length} results:`
                         : 'Search for a game to begin'}
                 </h2>
-                <CardColumns>
+                <CardColumns className='cards'>
                     {searchedGames.map((game) => {
                         return (
-                            <Card key={game.gameId} border='dark'>
-                                {game.cover ? (
-                                    <CardImg src={'http:' + game.cover.url} alt={`The cover for ${game.name}`} variant='top' />
-                                ) : null}
-                                <CardBody>
-                                    <CardTitle>{game.name}</CardTitle>
-                                </CardBody>
-                            </Card>
+                            <Link key={game.gameId} to={`/explore/game/${game.gameId}`}>
+                                    <Card key={game.gameId} border='dark' className='card'>
+                                        {game.cover ? (
+                                            <CardImg src={'http:' + game.cover.url} alt={`The cover for ${game.name}`} className='card__image' />
+                                        ) : null}
+                                        <CardBody>
+                                            <CardTitle className='card__title'>{game.name}</CardTitle>
+                                        </CardBody>
+                                    </Card>
+                            </Link>
                         );
                     })}
                 </CardColumns>

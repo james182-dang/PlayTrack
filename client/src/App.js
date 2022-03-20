@@ -6,6 +6,7 @@ import Sidebar from './components/Sidebar';
 import Feed from './pages/Feed';
 import SinglePost from './pages/SinglePost';
 import Explore from './pages/Explore';
+import GameDetails from './pages/GameDetails'
 import Connect from './pages/Connect';
 import Reviews from './pages/Reviews';
 import Profile from './pages/Profile';
@@ -48,6 +49,7 @@ const App = () => {
                 <Route exact path='/feed' component={Feed} />
                 <Route exact path='/post/:id' component={SinglePost} />
                 <Route exact path='/explore' component={Explore} />
+                <Route exact path='/explore/game/:id' component={GameDetails} />
                 <Route exact path='/connect' component={Connect} />
                 <Route exact path='/profile' component={Profile} />
                 <Route exact path='/profile/:username?' component={Profile} />

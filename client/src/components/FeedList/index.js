@@ -14,7 +14,6 @@ function FeedList() {
     const { data: userData } = useQuery(QUERY_ME_BASIC);
 
     const posts = data?.posts || [];
-    console.log(posts);
 
     const loggedIn = Auth.loggedIn();
 

@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { useMutation } from '@apollo/client';
 import { ADD_FRIEND } from '../utils/mutations';
@@ -6,7 +7,7 @@ import { QUERY_USER } from '../utils/queries';
 import { Col, Form, Button, Card, CardColumns } from 'react-bootstrap';
 import Auth from '../utils/auth';
 
-const Connect = () => {
+const Connect = props => {
 
     const [searchedUsers, setSearchedUsers] = useState([]);
 
@@ -17,7 +18,6 @@ const Connect = () => {
     const [saveFriend, { error }] = useMutation(ADD_FRIEND);
 
     const user = data?.user || [];
-    console.log(user);
 
     const loggedIn = Auth.loggedIn();
 
