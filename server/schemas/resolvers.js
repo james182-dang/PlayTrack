@@ -123,6 +123,20 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
 
+        addBio: async (parent, { bioText }, context) => {
+            if (context.user) {
+                const updatedUser = await User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { $push: { bio: { bioText } } },
+                    { new: true, runValidators: true }
+                );
+
+                return updatedUser;
+            }
+
+            throw new AuthenticationError('You need to be logged in!');
+        },
+
         addFriend: async (parent, { friendId }, context) => {
             if (context.user) {
                 const updatedUser = await User.findOneAndUpdate(

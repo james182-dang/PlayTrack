@@ -40,6 +40,7 @@ const Profile = () => {
         }
     };
 
+
     return (
         <div className='profile'>
             <div className='myHeader'>
@@ -53,10 +54,9 @@ const Profile = () => {
                     {! loading && user.bio
                       ? `${user.bio}`
                       : `${user.username} has not set up a bio.`}
-
                 </h4>
                     
-                    
+
             </div>
 
             <div>

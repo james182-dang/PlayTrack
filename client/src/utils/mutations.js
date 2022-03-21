@@ -38,6 +38,16 @@ export const ADD_FRIEND = gql`
     }
 `;
 
+export const ADD_BIO = gql`
+    mutation addBio($bio: String!) {
+        addBio(bioText: $bio) {
+            user {
+                bio
+            }
+        }
+    }
+`;
+
 export const ADD_POST = gql`
     mutation addPost($postText: String!) {
         addPost(postText: $postText) {

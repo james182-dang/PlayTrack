@@ -67,6 +67,7 @@ const typeDefs = gql`
         addReview(reviewText: String!): Review
         addComment(postId: ID!, commentBody: String!): Post
         addFriend(friendId: ID!): User
+        addBio(_id: ID!): User
     }
 
     type Auth {
