@@ -8,6 +8,7 @@ import SinglePost from './pages/SinglePost';
 import Explore from './pages/Explore';
 import GameDetails from './pages/GameDetails'
 import Connect from './pages/Connect';
+import Settings from './pages/Settings';
 import Reviews from './pages/Reviews';
 import Profile from './pages/Profile';
 import Widgets from './components/Widgets';
@@ -56,6 +57,7 @@ const App = () => {
                 <Route exact path='/login' component={LoginForm} />
                 <Route exact path='/signup' component={SignupForm} />
                 <Route exact path='/reviews' component={Reviews} />
+                <Route exact path='/settings' component={Settings} />
               </Switch>
             </div>
           <Widgets />

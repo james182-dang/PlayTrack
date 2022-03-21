@@ -44,9 +44,35 @@ const Profile = () => {
         <div className='profile'>
             <div className='myHeader'>
                 <h2>
-                    {userParam ? `${user.username}'s ` : 'Your'} profile
+                    {userParam ? `${user.username}` : 'Your Profile'}
                 </h2>
             </div>
+
+            <div>
+                <h4>
+                    {! loading && user.bio
+                      ? `${user.bio}`
+                      : `${user.username} has not set up a bio.`}
+
+                </h4>
+                    
+                    
+            </div>
+
+            <div>
+                <h4>
+                    {userParam ? `${user.username}'s ` : 'Your'} favorite game
+                </h4>
+            </div>
+
+            <div>
+                <h4>
+                    {! loading && user.completedGameCount
+                      ? `Viewing ${user.completedGameCount} completed ${user.completedGameCount === 1 ? 'game' : 'games'}`
+                      : 'You have no completed games.'}
+                </h4>
+            </div>
+
             <div>
                 {userParam && (
                     <button onClick={handleClick}>

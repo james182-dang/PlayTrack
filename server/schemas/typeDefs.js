@@ -7,12 +7,22 @@ const typeDefs = gql`
         username: String!
         email: String!
         password: String!
+        bio: String
+        savedGames: [Game]
+        completedGames: [Game]
+        completedGameCount: Int
         friends: [User]
         friendCount: Int
         reviews: [Review]
         reviewCount: Int
         posts: [Post]
         postCount: Int
+    }
+
+    type Game {
+        gameId: ID!
+        image: String
+        summary: String
     }
 
     type Post {

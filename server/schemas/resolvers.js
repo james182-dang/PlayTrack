@@ -37,11 +37,9 @@ const resolvers = {
             return Review.findOne({ _id });
         },
 
-        users: async () => {
+        users: async (parent, args) => {
             return User.find()
               .select('-__v -password')
-              .populate('posts')
-              .populate('reviews')
               .populate('friends');
         },
 

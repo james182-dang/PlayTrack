@@ -9,6 +9,8 @@ const GameDetails = props => {
 
     const { id: gameId } = useParams();
 
+    
+
     useEffect(() => {
 
         async function getGameId(gameId) {
@@ -21,7 +23,7 @@ const GameDetails = props => {
 
             const result = await response.json();
 
-            const gameData = result?.map((game) => ({
+            const gameData = result.map((game) => ({
 
                 gameId: game.id,
                 name: game.name,
@@ -30,14 +32,14 @@ const GameDetails = props => {
                 platforms: game.platforms,
                 genres: game.genres,
                 
-            }));
+            }),
+            setSelectedGame(gameData));
 
-            setSelectedGame(gameData);
         }
 
         getGameId(gameId);
 
-    }, [])
+    }, [selectedGame])
 
 
     return (

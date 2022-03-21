@@ -1,6 +1,8 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
+const gameSchema = require('./Game');
+
 const userSchema = new Schema(
     {
         username: {
@@ -20,6 +22,12 @@ const userSchema = new Schema(
             required: true,
             minlength: 8
         },
+        bio: {
+            type: String,
+            maxLength: 500
+        },
+        savedGames: [gameSchema],
+        completedGames: [gameSchema],
         reviews: [
             {
                 type: Schema.Types.ObjectId,
@@ -37,7 +45,8 @@ const userSchema = new Schema(
                 type: Schema.Types.ObjectId,
                 ref: 'User'
             }
-        ]
+        ],
+
     },
     {
         toJSON: {
@@ -58,6 +67,10 @@ userSchema.pre('save', async function (next) {
 userSchema.methods.isCorrectPassword = async function (password) {
     return bcrypt.compare(password, this.password);
 };
+
+userSchema.virtual('completedGameCount').get(function () {
+    return this.completedGames.length;
+});
 
 userSchema.virtual('friendCount').get(function () {
     return this.friends.length;

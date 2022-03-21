@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
+import { useQuery, useLazyQuery } from '@apollo/client';
 import { useMutation } from '@apollo/client';
 import { ADD_FRIEND } from '../utils/mutations';
 import { QUERY_USER } from '../utils/queries';
@@ -13,7 +12,9 @@ const Connect = props => {
 
     const [searchInput, setSearchInput] = useState('');
 
-    const { loading, data } = useQuery(QUERY_USER);
+    const [search, { loading, data }] = useLazyQuery(QUERY_USER, {
+        variables: {username: searchInput}
+    });
 
     const [saveFriend, { error }] = useMutation(ADD_FRIEND);
 
@@ -30,21 +31,11 @@ const Connect = props => {
 
         try {
 
-            const response = await fetch(`https://www.google.com`);
+            search();
 
-            if (!response.ok) {
-                throw new Error('Something went wrong...');
-            }
-
-            const { items } = await response.json();
-
-            const userData = items.map((user) => ({
-                userId: user._id,
-                username: user.username,
-                friends: user.friends
-            }))
-
+            setSearchedUsers(user);
             setSearchInput('');
+            console.log(searchedUsers);
         } catch (err) {
             console.error(err);
         }
