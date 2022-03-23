@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
 import { getSpecificGame } from '../utils/API';
+import { Button } from 'react-bootstrap';
 
 const GameDetails = props => {
 
@@ -30,35 +31,62 @@ const GameDetails = props => {
                 cover: game.cover,
                 summary: game.summary,
                 platforms: game.platforms,
+                platformId: game.platforms,
                 genres: game.genres,
+                genreId: game.genres,
                 
-            }),
-            setSelectedGame(gameData));
+            }));
+
+            setSelectedGame(gameData);
 
         }
 
         getGameId(gameId);
 
-    }, [selectedGame])
+    }, [])
 
 
     return (
         <div>
             {selectedGame.map((game) => {
-                <div className='myHeader'>
-                    <h2>
-                        {game.name}
-                    </h2>
-                </div>
+                return (
+                    <div key={game.gameId}>
+                        <div className='myHeader'>
+                            <h2>
+                                {game.name}
+                            </h2>
+                        </div>
+
+                        <div className='main_card'>
+                            <div>
+                                <img src={'http:' + game.cover.url} alt={`The cover for ${game.name}`} className='card_image'></img>
+                            </div>
+
+                            <div>
+                                <h4>
+                                    {game.platforms?.length === 1 ? 'Platform' : 'Platforms'}: {game.platforms?.map(platform => (<p key={platform.id}>{platform.name}</p>))}
+                                </h4>
+
+                                <h4>
+                                    {game.genres?.length === 1 ? 'Genre' : 'Genres'}: {game.genres?.map(genre => (<p key={genre.id}>{genre.name}</p>))}
+                                </h4>
+
+                            </div>
+                        </div>
+
+                        <div>
+                            <Button>Add to Completed Games</Button>
+                        </div>
+
+
+                        <div className='summary'>
+                            Summary: {game.summary}
+                        </div>
+                    </div>
+                );
             })}
 
-            <div>
-                <h5>Genre:</h5>
-            </div>
 
-            <div>
-                <h5>Companies involved: </h5>
-            </div>
         </div>
     )
 }

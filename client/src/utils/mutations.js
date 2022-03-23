@@ -38,12 +38,12 @@ export const ADD_FRIEND = gql`
     }
 `;
 
-export const ADD_BIO = gql`
-    mutation addBio($bio: String!) {
-        addBio(bioText: $bio) {
-            user {
-                bio
-            }
+export const UPDATE_USER = gql`
+    mutation updateUser($id: ID!, $bio: String!) {
+        updateUser(bio: $bio) {
+            _id
+            username
+            bio
         }
     }
 `;

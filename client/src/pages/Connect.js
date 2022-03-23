@@ -22,6 +22,10 @@ const Connect = props => {
 
     const loggedIn = Auth.loggedIn();
 
+    if (loading) return (
+        <div>Loading...</div>
+    );
+
     const handleFormSubmit = async (event) => {
         event.preventDefault();
 
@@ -31,9 +35,9 @@ const Connect = props => {
 
         try {
 
-            search();
+            const response = search();
 
-            setSearchedUsers(user);
+            setSearchedUsers(response.data);
             setSearchInput('');
             console.log(searchedUsers);
         } catch (err) {
@@ -90,21 +94,39 @@ const Connect = props => {
                 </Form.Row>
             </Form>
 
-            <CardColumns>
-                {searchedUsers.map((user) => {
+            {/* TEST DISPLAY ONLY, NEEDS REWORKING */}
+            <div>
+                {data && (
+                    <>
+                      {user.username}
+                      <br />
+                      Posts: {user.postCount}
+                      <br />
+                      Friends: {user.friendCount}
+                      {Auth.loggedIn() && (
+                          <Button className='btn-block btn-info' onClick={() => handleSaveFriend(data.user.userId)}>
+                              Add Friend
+                          </Button>
+                      )}
+                    </>
+                )}
+            </div>
+
+            {/* <CardColumns>
+                {searchedUsers?.map((data) => {
                     return (
-                        <Card key={user.username} border='dark'>
-                            {user.image ? (
-                                <Card.Img src={user.image} alt={`The avatar for ${user.username}`} variant='top' />
+                        <Card key={data.user.username} border='dark'>
+                            {data.user.image ? (
+                                <Card.Img src={data.user.image} alt={`The avatar for ${data.user.username}`} variant='top' />
                             ) : null}
                             <Card.Body>
-                                <Card.Title>{user.username}</Card.Title>
-                                <p className='small'>Friends: {user.friends}</p>
-                                <Card.Text>{user.friendCount}</Card.Text>
+                                <Card.Title>{data.user.username}</Card.Title>
+                                <p className='small'>Friends: {data.user.friends}</p>
+                                <Card.Text>{data.user.friendCount}</Card.Text>
                                 {Auth.loggedIn() && (
                                     <Button
                                       className='btn-block btn-info'
-                                      onClick={() => handleSaveFriend(user.userId)}>
+                                      onClick={() => handleSaveFriend(data.user.userId)}>
                                     
                                     </Button>
                                 )}
@@ -112,7 +134,7 @@ const Connect = props => {
                         </Card>
                     );
                 })};
-            </CardColumns>
+            </CardColumns> */}
         </div>
     );
 }

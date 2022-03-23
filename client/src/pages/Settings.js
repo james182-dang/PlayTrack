@@ -8,6 +8,16 @@ const Settings = () => {
 
     const user = data?.me || {};
 
+    if (!user?.username) {
+        return (
+            <h4>
+                You need to be logged in to see this page.
+            </h4>
+        )
+    }
+
+    
+
     return (
         <div>
             <div className='myHeader'>
@@ -25,6 +35,10 @@ const Settings = () => {
                     Your username: {`${user.username}`}
                     <br />
                     Your email: {`${user.email}`}
+                </h5>
+
+                <h5>
+                    
                 </h5>
             </div>
         </div>

@@ -19,6 +19,10 @@ const typeDefs = gql`
         postCount: Int
     }
 
+    input UpdateUserInput {
+        bio: String
+    }
+
     type Game {
         gameId: ID!
         image: String
@@ -67,7 +71,7 @@ const typeDefs = gql`
         addReview(reviewText: String!): Review
         addComment(postId: ID!, commentBody: String!): Post
         addFriend(friendId: ID!): User
-        addBio(_id: ID!): User
+        updateUser(bio: String, input: UpdateUserInput!): User
     }
 
     type Auth {
