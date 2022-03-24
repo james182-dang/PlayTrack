@@ -1,16 +1,25 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
+import { COMPLETE_GAME } from '../utils/mutations';
 import { getSpecificGame } from '../utils/API';
 import { Button } from 'react-bootstrap';
+import { saveGameIds, getSavedGameIds } from '../utils/localStorage';
+import Auth from '../utils/auth';
 
 const GameDetails = props => {
 
     const [selectedGame, setSelectedGame] = useState([]);
 
+    const [savedGameIds, setSavedGameIds] = useState(getSavedGameIds());
+
+    const [completeGame, { error }] = useMutation(COMPLETE_GAME);
+
     const { id: gameId } = useParams();
 
-    
+    useEffect(() => {
+        return () => saveGameIds(savedGameIds);
+    });
 
     useEffect(() => {
 
@@ -45,6 +54,29 @@ const GameDetails = props => {
 
     }, [])
 
+    const handleCompleteGame = async (gameId) => {
+        
+        const gameToComplete = selectedGame.find((game) => game.gameId === gameId);
+
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+        if (!token) {
+            return false;
+        }
+
+        try {
+            const { data } = await completeGame({
+                variables: { addGame: { gameId } },
+            });
+
+            console.log(data);
+
+            setSavedGameIds([...savedGameIds, gameToComplete.gameId]);
+        } catch (err) {
+            console.error(err);
+        }
+
+    };
 
     return (
         <div>
@@ -75,7 +107,13 @@ const GameDetails = props => {
                         </div>
 
                         <div>
-                            <Button>Add to Completed Games</Button>
+                            <Button
+                              disabled={savedGameIds?.some((savedGameId) => savedGameId === game.gameId)}
+                              onClick={() => handleCompleteGame(game.gameId)}>
+                              {savedGameIds?.some((savedGameId) => savedGameId === game.gameId)
+                                ? "You've completed this game!"
+                                : 'Complete this Game'}
+                            </Button>
                         </div>
 
 

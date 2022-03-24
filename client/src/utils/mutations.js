@@ -77,6 +77,7 @@ export const ADD_REVIEW = gql`
         }
     }
 `;
+
 export const ADD_COMMENT = gql`
     mutation addComment($postId: ID!, $commentBody: String!) {
         addComment(postId: $postId, commentBody: $commentBody) {
@@ -87,6 +88,18 @@ export const ADD_COMMENT = gql`
                 commentBody
                 createdAt
                 username
+            }
+        }
+    }
+`;
+
+export const COMPLETE_GAME = gql`
+    mutation completeGame($addGame: AddNewGame!) {
+        completeGame(addGame: $addGame) {
+            _id
+            completedGameCount
+            completedGames {
+                gameId
             }
         }
     }

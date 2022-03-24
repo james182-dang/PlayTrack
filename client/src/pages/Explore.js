@@ -132,7 +132,7 @@ const Explore = () => {
                                         ) : null}
                                         <CardBody>
                                             <CardTitle className='card__title'>{game.name}</CardTitle>
-                                            <CardTitle className='card__title'>{game.platforms?.map(platform => (<p>{platform.name}</p>))}</CardTitle>
+                                            <CardTitle className='card__title'>{game.platforms?.map(platform => (<p key={platform.id}>{platform.name}</p>))}</CardTitle>
                                         </CardBody>
                                     </Card>
                             </Link>

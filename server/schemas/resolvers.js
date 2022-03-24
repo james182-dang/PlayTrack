@@ -137,6 +137,20 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
 
+        completeGame: async (parent, { addGame }, context) => {
+            if (context.user) {
+                const updatedUser = await User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { $push: { completedGames: addGame } },
+                    { new: true }
+                )
+
+                return updatedUser;
+            }
+
+            throw new AuthenticationError('You need to be logged in!');
+        },
+
         addFriend: async (parent, { friendId }, context) => {
             if (context.user) {
                 const updatedUser = await User.findOneAndUpdate(
