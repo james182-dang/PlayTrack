@@ -79,7 +79,11 @@ export const QUERY_USER = gql`
             username
             email
             friendCount
+            completedGameCount
             postCount
+            completedGames {
+                gameId
+            }
             friends {
                 _id
                 username
@@ -95,6 +99,17 @@ export const QUERY_USER = gql`
     }
 `;
 
+export const QUERY_COMPLETED_GAMES = gql`
+    query user($username: String!) {
+        user(username: $username) {
+            _id
+            username
+            completedGames {
+                gameId
+            }
+        }
+    }
+`;
 export const QUERY_ME = gql`
     {
         me {
@@ -103,6 +118,12 @@ export const QUERY_ME = gql`
             email
             friendCount
             postCount
+            completedGameCount
+
+            completedGames {
+                gameId
+            }
+
             posts {
                 _id
                 postText
@@ -143,12 +164,17 @@ export const QUERY_ME_BASIC = gql`
             _id
             username
             email
+            completedGameCount
             friendCount
             postCount
             reviewCount
             friends {
                 _id
                 username
+            }
+
+            completedGames {
+                gameId
             }
         }
     }

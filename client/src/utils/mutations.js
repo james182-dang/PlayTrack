@@ -97,7 +97,31 @@ export const COMPLETE_GAME = gql`
     mutation completeGame($addGame: AddNewGame!) {
         completeGame(addGame: $addGame) {
             _id
+            name
+            cover
             completedGameCount
+            completedGames {
+                gameId
+            }
+        }
+    }
+`;
+
+export const ADD_NOW_PLAYING = gql`
+    mutation addNowPlaying($addNowPlaying: AddNowPlaying!) {
+        addNowPlaying(addNowPlaying: $addNowPlaying) {
+            _id
+            nowPlaying {
+                gameId
+            }
+        }
+    }
+`;
+
+export const REMOVE_COMPLETED_GAME = gql`
+    mutation removeCompletedGame($gameId: ID!) {
+        removeCompletedGame(removeCompletedGame: $gameId) {
+            _id
             completedGames {
                 gameId
             }

@@ -26,6 +26,10 @@ const userSchema = new Schema(
             type: String,
             maxLength: 500
         },
+        nowPlaying: {
+            type: Schema.Types.ObjectId,
+            ref: 'Game'
+        },
         savedGames: [gameSchema],
         completedGames: [gameSchema],
         reviews: [

@@ -5,6 +5,7 @@ import { QUERY_USER, QUERY_ME } from '../utils/queries';
 import FriendList from '../components/FriendList';
 import PostList from '../components/PostList';
 import Auth from '../utils/auth';
+import { useEffect } from 'react';
 
 const Profile = () => {
     const [addFriend] = useMutation(ADD_FRIEND);

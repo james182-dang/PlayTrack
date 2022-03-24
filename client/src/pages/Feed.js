@@ -18,7 +18,7 @@ const Feed = props => {
                 <h2 style={{ color: 'white' }}>Feed</h2>
             </div>
 
-            <div>
+            <div className='feedParent'>
                 <FeedList />
             </div>
 

@@ -14,6 +14,22 @@ export const saveGameIds = (gameIdArr) => {
     }
 };
 
+export const getNowPlayingIds = () => {
+    const nowPlayingIds = localStorage.getItem('now_playing')
+    ? JSON.parse(localStorage.getItem('now_playing'))
+    : [];
+
+    return nowPlayingIds;
+};
+
+export const nowPlayingIds = (gameIdArr) => {
+    if (gameIdArr.length) {
+        localStorage.setItem('now_playing', JSON.stringify(gameIdArr));
+    } else {
+        localStorage.removeItem('now_playing');
+    }
+};
+
 export const removeGameId = (gameId) => {
     const savedGameIds = localStorage.getItem('saved_games')
       ? JSON.parse(localStorage.getItem('saved_games'))

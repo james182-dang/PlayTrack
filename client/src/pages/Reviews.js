@@ -1,15 +1,27 @@
 import { useQuery } from '@apollo/client';
+import { QUERY_USER, QUERY_ME, QUERY_COMPLETED_GAMES, QUERY_ME_BASIC } from '../utils/queries';
+import CompletedGameList from '../components/CompletedGameList';
 import Auth from '../utils/auth';
-import { QUERY_REVIEWS, QUERY_REVIEW, QUERY_ME_BASIC } from '../utils/queries';
 
 const Reviews = () => {
-    const { loading, data } = useQuery(QUERY_REVIEWS);
 
-    const { data: userData } = useQuery(QUERY_ME_BASIC);
+    const { loading, data } = useQuery(QUERY_COMPLETED_GAMES);
 
-    const reviews = data?.reviews || [];
+    const user = data?.me || {};
+
+    const completedGames = user.completedGames || [];
     
     const loggedIn = Auth.loggedIn();
+
+    if (!user.completedGames) {
+        return <div>
+            <div className='myHeader'>
+                <h2>Reviews</h2>
+            </div>
+
+            <div>You must complete a game before you can leave a review.</div>
+        </div>
+    };
 
     return (
         <div>
@@ -19,9 +31,13 @@ const Reviews = () => {
                 </h2>
             </div>
 
-            <p>Reviews for Games you know</p>
+            <div>
+                <h4>Select the game you wish to review</h4>
 
-            <p>Create New Review</p>
+                <CompletedGameList completedGames={completedGames} />
+            </div>
+
+
         </div>
     );
 }

@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
-import { COMPLETE_GAME } from '../utils/mutations';
+import { COMPLETE_GAME, ADD_NOW_PLAYING } from '../utils/mutations';
 import { getSpecificGame } from '../utils/API';
 import { Button } from 'react-bootstrap';
-import { saveGameIds, getSavedGameIds } from '../utils/localStorage';
+import { saveGameIds, getSavedGameIds, nowPlayingIds, getNowPlayingIds } from '../utils/localStorage';
 import Auth from '../utils/auth';
 
 const GameDetails = props => {
@@ -13,7 +13,11 @@ const GameDetails = props => {
 
     const [savedGameIds, setSavedGameIds] = useState(getSavedGameIds());
 
+    const [nowPlayingIds, setNowPlayingIds] = useState(getNowPlayingIds());
+
     const [completeGame, { error }] = useMutation(COMPLETE_GAME);
+
+    const [addNowPlaying, { NPerror }] = useMutation(ADD_NOW_PLAYING);
 
     const { id: gameId } = useParams();
 
@@ -78,6 +82,29 @@ const GameDetails = props => {
 
     };
 
+    const handleAddNowPlaying = async (gameId) => {
+
+        const gameNowPlaying = selectedGame.find((game) => game.gameId === gameId);
+
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+        if (!token) {
+            return false;
+        }
+
+        try {
+            const { data } = await addNowPlaying({
+                variables: { addNowPlaying: { gameId } },
+            });
+
+            console.log(data);
+
+            setNowPlayingIds([...nowPlayingIds, gameNowPlaying.gameId])
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
     return (
         <div>
             {selectedGame.map((game) => {
@@ -114,6 +141,20 @@ const GameDetails = props => {
                                 ? "You've completed this game!"
                                 : 'Complete this Game'}
                             </Button>
+                        </div>
+
+                        <div>
+                            <Button
+                              disabled={nowPlayingIds?.some((nowPlayingId) => nowPlayingId === game.gameId)}
+                              onClick={() => handleAddNowPlaying(game.gameId)}>
+                              {nowPlayingIds?.some((nowPlayingId) => nowPlayingId === game.gameId)
+                                ? "You're playing this game now!"
+                                : 'Set as Now Playing'}
+                              </Button>
+                        </div>
+
+                        <div>
+                            
                         </div>
 
 

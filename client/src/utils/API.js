@@ -48,4 +48,4 @@ export const getSpecificGame = (gameId) => {
                 where id = ${gameId};`
             })
         });
-}
+};

@@ -10,6 +10,7 @@ const resolvers = {
                     .select('-__v -password')
                     .populate('posts')
                     .populate('reviews')
+                    .populate('completedGames')
                     .populate('friends');
 
                 return userData;
@@ -142,6 +143,34 @@ const resolvers = {
                 const updatedUser = await User.findOneAndUpdate(
                     { _id: context.user._id },
                     { $push: { completedGames: addGame } },
+                    { new: true }
+                )
+
+                return updatedUser;
+            }
+
+            throw new AuthenticationError('You need to be logged in!');
+        },
+
+        removeCompletedGame: async (parent, { removeCompletedGame }, context) => {
+            if (context.user) {
+                const updatedUser = await User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { $pull: { completedGames: removeCompletedGame } },
+                    { new: true }
+                )
+
+                return updatedUser;
+            }
+
+            throw new AuthenticationError('You need to be logged in!');
+        },
+
+        addNowPlaying: async (parent, { addNowPlaying }, context) => {
+            if (context.user) {
+                const updatedUser = await User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { $set: { nowPlaying: addNowPlaying } },
                     { new: true }
                 )
 

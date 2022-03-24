@@ -16,7 +16,7 @@ const PostList = ({ posts }) => {
         <div className='post'>
             {posts &&
               posts.map(post => (
-                  <div key={post._id}>
+                  <div key={post._id} className='talk-bubble tri-right left-in round'>
                       <p>
                           <Link
                             to={`/profile/${post.username}`}

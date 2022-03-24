@@ -8,6 +8,7 @@ const typeDefs = gql`
         email: String!
         password: String!
         bio: String
+        nowPlaying: [Game]
         savedGames: [Game]
         completedGames: [Game]
         completedGameCount: Int
@@ -25,9 +26,15 @@ const typeDefs = gql`
 
     type Game {
         gameId: Int
+        name: String
+        summary: String
     }
 
     input AddNewGame {
+        gameId: Int
+    }
+
+    input AddNowPlaying {
         gameId: Int
     }
 
@@ -75,6 +82,8 @@ const typeDefs = gql`
         addFriend(friendId: ID!): User
         updateUser(bio: String, input: UpdateUserInput!): User
         completeGame(addGame: AddNewGame!): User
+        removeCompletedGame(removeCompletedGame: ID!): User
+        addNowPlaying(addNowPlaying: AddNowPlaying!): User
     }
 
     type Auth {
