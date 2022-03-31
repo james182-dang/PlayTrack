@@ -14,6 +14,13 @@ export const QUERY_POSTS = gql`
                 username
                 commentBody
             }
+
+            likeCount
+            likes {
+                _id
+                username
+                createdAt
+            }
         }
     }
 `;
@@ -31,6 +38,13 @@ export const QUERY_POST = gql`
                 createdAt
                 username
                 commentBody
+            }
+
+            likeCount
+            likes {
+                _id
+                username
+                createdAt
             }
         }
     }
@@ -89,6 +103,10 @@ export const QUERY_USER = gql`
                 username
             }
 
+            likes {
+                _id
+            }
+
             posts {
                 _id
                 postText
@@ -119,6 +137,9 @@ export const QUERY_ME = gql`
             friendCount
             postCount
             completedGameCount
+            likes {
+                _id
+            }
 
             completedGames {
                 gameId
@@ -134,6 +155,12 @@ export const QUERY_ME = gql`
                     createdAt
                     commentBody
                     username
+                }
+                likeCount
+                likes {
+                    _id
+                    username
+                    createdAt
                 }
             }
 

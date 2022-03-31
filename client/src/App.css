@@ -26,13 +26,17 @@ body {
   color: white;
 }
 
+
+
 .searchBar {
   margin-left: 150px;
   margin-top: 15px;
 }
 
+
+
 .feedParent {
-  height: 65vh;
+  height: 93vh;
   overflow-y: scroll;
 }
 
@@ -62,7 +66,7 @@ body {
 .card__title {
   font-size: 1em;
   margin: 0 0 .3em;
-  color: #6A515E;
+  color: #D3D3D3;
 }
 
 .summary {
@@ -128,13 +132,6 @@ body {
 	border-radius: 15px;
 }
 
-.PG {
-	background: #92FE9D;
-	-webkit-box-shadow: 0 0 50px rgba(0,0,0,0.1);
-	        box-shadow: 0 0 50px rgba(0,0,0,0.1);
-	-webkit-transition: 300ms ease-in-out;
-}
-
 .disc {
 	font-weight: 100;
 	line-height: 27px;
@@ -146,4 +143,55 @@ a {
 }
 .social-btn {
 	margin-left: -10px;
+}
+
+/* Explore CSS */ 
+
+.explore {
+  background-color: #4e4e4e;
+  height: 100vh;
+}
+
+.exploreSearch {
+  text-align: center;
+  margin-top: 1.5%;
+}
+
+.exploreContainer {
+  height: 79%;
+  overflow-y: scroll;
+}
+
+.searchResults {
+  margin-top: 1.5%;
+  text-align: center;
+  color: #D3D3D3;
+}
+
+/* Connect CSS */
+
+.connect {
+  background-color: #4e4e4e;
+  height: 100vh;
+}
+
+/* Reviews CSS */
+
+.reviews {
+  background-color: #4e4e4e;
+  height: 100vh;
+}
+
+/* Profile CSS */
+
+.profile {
+  background-color: #4e4e4e;
+  height: 100vh;
+}
+
+/* gameDetails CSS */
+
+.gameDetails {
+  background-color: #4e4e4e;
+  height: 100vh;
 }

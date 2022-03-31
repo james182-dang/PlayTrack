@@ -89,43 +89,49 @@ const Explore = () => {
     };
 
     return (
-        <div>
+        <div className='explore'>
             <div className='myHeader'>
                 <h2>
                     Explore
                 </h2>
             </div>
 
-            <Form onSubmit={handleFormSubmit}>
-                <Form.Row>
-                    <Col xs={12} md={8}>
-                        <Form.Control
-                            name='searchInput'
-                            value={searchInput}
-                            onChange={(e) => setSearchInput(e.target.value)}
-                            type='text'
-                            size='lg'
-                            placeholder='Search for a Game'
-                        />
-                    </Col>
-                    <Col xs={12} md={4}>
-                        <Button type='submit' variant='success' size='lg'>
-                            Submit Search
-                        </Button>
-                    </Col>
-                </Form.Row>
-            </Form>
+                <div className='searchResults'>
+                    <h2>
+                        {searchedGames?.length
+                            ? `Viewing ${searchedGames.length} results:`
+                            : 'Search for a game to begin'}
+                    </h2>
+                </div>
+                
+            <div className='exploreSearch'>
+                <Form onSubmit={handleFormSubmit}>
+                    <Form.Row>
+                        <Col xs={12} md={8}>
+                            <Form.Control
+                                name='searchInput'
+                                className='exploreSearch'
+                                value={searchInput}
+                                onChange={(e) => setSearchInput(e.target.value)}
+                                type='text'
+                                size='lg'
+                                placeholder='Search for a Game'
+                            />
+                        </Col>
+                        <Col xs={12} md={4}>
+                            <Button type='submit' variant='success' size='lg'>
+                                Submit Search
+                            </Button>
+                        </Col>
+                    </Form.Row>
+                </Form>
+            </div>
 
-            <Container>
-                <h2>
-                    {searchedGames?.length
-                        ? `Viewing ${searchedGames.length} results:`
-                        : 'Search for a game to begin'}
-                </h2>
-                <CardColumns className='cards'>
-                    {searchedGames.map((game) => {
-                        return (
-                            <Link key={game.gameId} to={`/explore/game/${game.gameId}`}>
+                <Container className='exploreContainer'>
+                    <CardColumns className='cards'>
+                        {searchedGames.map((game) => {
+                            return (
+                                <Link key={game.gameId} to={`/explore/game/${game.gameId}`}>
                                     <Card key={game.gameId} border='dark' className='card'>
                                         {game.cover ? (
                                             <CardImg src={'http:' + game.cover.url} alt={`The cover for ${game.name}`} className='card__image' />
@@ -135,11 +141,11 @@ const Explore = () => {
                                             <CardTitle className='card__title'>{game.platforms?.map(platform => (<p key={platform.id}>{platform.name}</p>))}</CardTitle>
                                         </CardBody>
                                     </Card>
-                            </Link>
-                        );
-                    })}
-                </CardColumns>
-            </Container>
+                                </Link>
+                            );
+                        })}
+                    </CardColumns>
+                </Container>
         </div>
     );
 }

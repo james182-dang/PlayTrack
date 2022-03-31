@@ -36,7 +36,7 @@ function Sidebar(props) {
                     <Link to='/settings'>
                         <SidebarOption Icon={SettingsIcon} text='Settings' />
                     </Link>
-                    <a href='/' onClick={Auth.logout}>
+                    <a href='/' onClick={Auth.logout} className='logoutTab'>
                         <SidebarOption Icon={PowerOffIcon} text='Logout' />
                     </a>
 

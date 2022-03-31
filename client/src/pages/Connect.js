@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useQuery, useLazyQuery } from '@apollo/client';
 import { useMutation } from '@apollo/client';
 import { ADD_FRIEND } from '../utils/mutations';
@@ -66,48 +67,62 @@ const Connect = props => {
     };
 
     return (
-        <div>
+        <div className='connect'>
             <div className='myHeader'>
                 <h2>
                     Connect
                 </h2>
             </div>
 
+            <div className='searchResults'>
+                <h2>
+                    {searchedUsers?.length
+                        ? `${searchedUsers.length} results`
+                        : 'Connect with friends!'}
+                </h2>
+            </div>
 
-            <Form onSubmit={handleFormSubmit}>
-                <Form.Row>
-                    <Col xs={12} md={8}>
-                        <Form.Control
-                          name='searchInput'
-                          value={searchInput}
-                          onChange={(e) => setSearchInput(e.target.value)}
-                          type='text'
-                          size='lg'
-                          placeholder='Search for users'
-                        />
-                    </Col>
-                    <Col xs={12} md={4}>
-                        <Button type='submit' variant='success' size='lg'>
-                            Submit
-                        </Button>
-                    </Col>
-                </Form.Row>
-            </Form>
+            <div className='exploreSearch'>
+                <Form onSubmit={handleFormSubmit}>
+                    <Form.Row>
+                        <Col xs={12} md={8}>
+                            <Form.Control
+                                name='searchInput'
+                                value={searchInput}
+                                onChange={(e) => setSearchInput(e.target.value)}
+                                type='text'
+                                size='lg'
+                                placeholder='Search for users'
+                            />
+                        </Col>
+                        <Col xs={12} md={4}>
+                            <Button type='submit' variant='success' size='lg'>
+                                Submit
+                            </Button>
+                        </Col>
+                    </Form.Row>
+                </Form>
+            </div>
 
             {/* TEST DISPLAY ONLY, NEEDS REWORKING */}
             <div>
                 {data && (
                     <>
-                      {user.username}
-                      <br />
-                      Posts: {user.postCount}
-                      <br />
-                      Friends: {user.friendCount}
-                      {Auth.loggedIn() && (
-                          <Button className='btn-block btn-info' onClick={() => handleSaveFriend(data.user.userId)}>
-                              Add Friend
-                          </Button>
-                      )}
+                        <Link
+                            to={`/profile/${user.username}`}
+                            style={{ fontWeight: 700, textDecoration: 'none' }}
+                        >
+                            {user.username}
+                        </Link>
+                        <br />
+                        Posts: {user.postCount}
+                        <br />
+                        Friends: {user.friendCount}
+                        {Auth.loggedIn() && (
+                            <Button className='btn-block btn-info' onClick={() => handleSaveFriend(data.user.userId)}>
+                                Add Friend
+                            </Button>
+                        )}
                     </>
                 )}
             </div>

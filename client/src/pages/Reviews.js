@@ -14,17 +14,17 @@ const Reviews = () => {
     const loggedIn = Auth.loggedIn();
 
     if (!user.completedGames) {
-        return <div>
+        return <div className='reviews'>
             <div className='myHeader'>
                 <h2>Reviews</h2>
             </div>
 
-            <div>You must complete a game before you can leave a review.</div>
+            <div style={{color: '#D3D3D3'}}>You must complete a game before you can leave a review.</div>
         </div>
     };
 
     return (
-        <div>
+        <div className='reviews'>
             <div className='myHeader'>
                 <h2>
                     Reviews

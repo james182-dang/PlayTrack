@@ -18,6 +18,7 @@ const typeDefs = gql`
         reviewCount: Int
         posts: [Post]
         postCount: Int
+        likes: [Like]
     }
 
     input UpdateUserInput {
@@ -31,7 +32,8 @@ const typeDefs = gql`
     }
 
     input AddNewGame {
-        gameId: Int
+        gameId: Int!
+        name: String!
     }
 
     input AddNowPlaying {
@@ -45,6 +47,8 @@ const typeDefs = gql`
         username: String
         comments: [Comment]
         commentCount: Int
+        likes: [Like]
+        likeCount: Int
     }
 
     type Review {
@@ -63,6 +67,12 @@ const typeDefs = gql`
         createdAt: String
     }
 
+    type Like {
+        _id: ID
+        username: String!
+        createdAt: String!
+    }
+
     type Query {
         me: User
         users: [User]
@@ -79,6 +89,7 @@ const typeDefs = gql`
         addPost(postText: String!): Post
         addReview(reviewText: String!): Review
         addComment(postId: ID!, commentBody: String!): Post
+        addLike(postId: ID!, username: String!): Post
         addFriend(friendId: ID!): User
         updateUser(bio: String, input: UpdateUserInput!): User
         completeGame(addGame: AddNewGame!): User

@@ -1,3 +1,10 @@
+.singlePost {
+    background-color: #4e4e4e;
+    animation: backInDown;
+    animation-duration: 1s;
+    height: 100vh;
+}
+
 .post__body > img {
     border-radius: 20px;
     width: 100%;

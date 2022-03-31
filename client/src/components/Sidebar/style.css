@@ -7,6 +7,7 @@
   padding-left: 20px;
   background-color: #282828;
   text-decoration: none;
+  list-style: none;
 }
 
 .sidebar__genericIcon {
@@ -14,4 +15,8 @@
   font-size: 30px !important;
   margin-left: 20px;
   margin-bottom: 20px;
+}
+
+.logoutTab {
+  border-top: 1px solid #D3D3D3;
 }

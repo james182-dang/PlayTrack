@@ -60,23 +60,23 @@ function PostBox() {
     return (
         <div className='postBox'>
             <form onSubmit={sendPost}>
-                <Avatar />
-                <p className={`m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}>
-                    Character Count: {characterCount}/280
-                    {error && <span className='ml-2'>Something went wrong...</span>}
-                </p>
+
                 <div className='postBox__input'>
                     <input
                         value={postText}
                         onChange={handleChange}
                         placeholder="Whatcha playin'?"
                         type='text'
+                        className='input__area'
                     />
                 </div>
-                <Button type='submit' className='postBox__button'>
-                    Post
-                </Button>
 
+                <div className='post__bottom'>
+                    <span className='counter'>{characterCount}</span>
+                    <Button type='submit' className='postBox__button'>
+                        Post
+                    </Button>
+                </div>
             </form>
         </div>
     );

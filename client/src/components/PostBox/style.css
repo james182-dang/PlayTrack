@@ -1,12 +1,16 @@
 .postBox {
-  border-top: 8px solid var(--twitter-background);
-  border-bottom: 8px solid var(--twitter-background);
-  padding-right: 10px;
+  display: flex;
+  margin: 0 15vw 0 12vw;
   justify-content: center;
-  bottom: 0;
-  width: 54.56%;
+  bottom: 30px;
+  width: 30vw;
   position: fixed;
+  border-radius: 15px;
   background-color: white;
+}
+
+form {
+  width: 100%;
 }
 
 .postBox > form {
@@ -15,8 +19,23 @@
 }
 
 .postBox__input {
-  display: flex;
-  padding: 20px;
+  padding-top: 10px;
+  width: 100%;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.postBox__input .input__area {
+  position: relative;
+  min-height: 80px;
+  overflow-y: auto;
+}
+
+.input__area input {
+  outline: none;
+  font-size: 17px;
+  min-height: inherit;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
 .postBox__input > input {
@@ -24,22 +43,22 @@
   margin-left: 20px;
   font-size: 20px;
   border: none;
+  outline: none;
+  font-size: 17px;
+  min-height: inherit;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
 .postBox__input > input:focus {
   outline: none;
 }
 
-.postBox__button {
-  background-color: var(--twitter-color) !important;
-  border: none !important;
-  color: white !important;
-  font-weight: 700 !important;
-  text-transform: inherit !important;
-  border-radius: 20px !important;
-  height: 45px !important;
-  margin-top: 20px !important;
-  margin-left: auto !important;
+.post__bottom {
+  display: flex;
+  margin-top: 13px;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .postBox__imageInput {

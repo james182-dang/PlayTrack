@@ -1,15 +1,15 @@
 import { Link } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
+import SportsEsportsOutlinedIcon from '@mui/icons-material/SportsEsportsOutlined';
 import {
     ChatBubbleOutline,
     FavoriteBorder,
-    Publish,
-    Repeat,
-    VerifiedUser
+    Publish
 } from '@mui/icons-material';
 import './style.css';
 
 const PostList = ({ posts }) => {
+
 
 
     return (
@@ -17,7 +17,7 @@ const PostList = ({ posts }) => {
             {posts &&
               posts.map(post => (
                   <div key={post._id} className='talk-bubble tri-right left-in round'>
-                      <p>
+                      <p className='post__date'>
                           <Link
                             to={`/profile/${post.username}`}
                             style={{ fontWeight: 700 }}
@@ -29,17 +29,13 @@ const PostList = ({ posts }) => {
                          {post.createdAt}
                       </p>
                       <div>
-                          <Link to={`/post/${post._id}`} className='post__body'>
+                          <Link to={`/feed/post/${post._id}`} className='post__body'>
                               <p>{post.postText}</p>
-                              <p>
-                                  Comments: {post.commentCount} || Click to{' '}
-                                  {post.commentCount ? 'see' : 'start'} the discussion!
-                              </p>
                           </Link>
                       </div>
                       <div className='post__footer'>
-                          <ChatBubbleOutline fontSize='small' />
-                          <Repeat fontSize='small' />
+                          <ChatBubbleOutline fontSize='small'>{post.commentCount}</ChatBubbleOutline>
+                          <SportsEsportsOutlinedIcon fontSize='small' />
                           <FavoriteBorder fontSize='small' />
                           <Publish fontSize='small' />
                       </div>

@@ -93,19 +93,33 @@ export const ADD_COMMENT = gql`
     }
 `;
 
-export const COMPLETE_GAME = gql`
-    mutation completeGame($addGame: AddNewGame!) {
-        completeGame(addGame: $addGame) {
+export const ADD_LIKE = gql`
+    mutation addLike($postId: ID!, $username: String!) {
+        addLike(postId: $postId, username: $username) {
             _id
-            name
-            cover
-            completedGameCount
-            completedGames {
-                gameId
+            likeCount
+            likes {
+                _id
+                username
+                createdAt
             }
         }
     }
 `;
+
+export const COMPLETE_GAME = gql`
+    mutation completeGame($addGame: AddNewGame!) {
+        completeGame(addGame: $addGame) {
+            _id
+            completedGameCount
+            completedGames {
+                gameId
+                name
+            }
+        }
+    }
+`;
+
 
 export const ADD_NOW_PLAYING = gql`
     mutation addNowPlaying($addNowPlaying: AddNowPlaying!) {

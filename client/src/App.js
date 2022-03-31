@@ -4,7 +4,7 @@ import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@ap
 import { setContext } from '@apollo/client/link/context';
 import Sidebar from './components/Sidebar';
 import Feed from './pages/Feed';
-import SinglePost from './pages/SinglePost';
+import SinglePost from './components/SinglePost';
 import Explore from './pages/Explore';
 import GameDetails from './pages/GameDetails'
 import Connect from './pages/Connect';
@@ -48,7 +48,7 @@ const App = () => {
               <Switch>
                 <Route exact path='/' component={Feed} />
                 <Route exact path='/feed' component={Feed} />
-                <Route exact path='/post/:id' component={SinglePost} />
+                <Route exact path='/feed/post/:id' component={SinglePost} />
                 <Route exact path='/explore' component={Explore} />
                 <Route exact path='/explore/game/:id' component={GameDetails} />
                 <Route exact path='/connect' component={Connect} />
