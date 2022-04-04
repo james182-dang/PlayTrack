@@ -1,5 +1,5 @@
 const { Schema } = require('mongoose');
-const dateFromat = require('../utils/dateFormat');
+const dateFormat = require('../utils/dateFormat');
 
 const likeSchema = new Schema(
     {

@@ -1,15 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useQuery, useMutation } from '@apollo/client';
-import { getGame, getSpecificGame } from '../utils/API';
-import { saveGameIds, getSavedGameIds } from '../utils/localStorage';
+import { getGame } from '../utils/API';
+import { getSavedGameIds } from '../utils/localStorage';
 import Auth from '../utils/auth';
 import { Container, Col, Form, Button, CardColumns } from 'react-bootstrap';
-import {Card, CardText, CardBody, CardTitle, CardSubtitle, CardImg} from 'reactstrap';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
+import {Card, CardBody, CardTitle, CardImg} from 'reactstrap';
+
 
 const Explore = () => {
     

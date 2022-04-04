@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import { Redirect, useParams } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
 import { ADD_FRIEND } from '../utils/mutations';
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
+import CompletedGameList from '../components/CompletedGameList';
 import FriendList from '../components/FriendList';
 import PostList from '../components/PostList';
 import Auth from '../utils/auth';
@@ -40,7 +42,6 @@ const Profile = () => {
         }
     };
 
-
     return (
         <div className='profile'>
             <div className='myHeader'>
@@ -71,6 +72,8 @@ const Profile = () => {
                       ? `Viewing ${user.completedGameCount} completed ${user.completedGameCount === 1 ? 'game' : 'games'}`
                       : 'You have no completed games.'}
                 </h4>
+
+                <CompletedGameList games={user.completedGames} />
             </div>
 
             <div>

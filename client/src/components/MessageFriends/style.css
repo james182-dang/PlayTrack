@@ -1,0 +1,77 @@
+.friendMessageList {
+    display: flex;
+    width: 55%;
+    margin: 0 auto;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.friendMessageListContainer {
+    background-color: #ffffff;
+    width: 65%;
+    padding: 20px 0;
+}
+
+.friend {
+    display: flex;
+    margin-bottom: 20px;
+    position: relative;
+    border-bottom: 1px solid #e6e9ec;
+}
+
+.friend:last-of-type {
+    border: 0;
+}
+
+.friend::after {
+    content: '';
+    width: 92px;
+    height: 2px;
+    background: #fff;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+}
+
+.friendInfo {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.friendInfoContainer {
+    display: flex;
+    width: 100%;
+}
+
+.friendInfo h4 {
+    margin: 0;
+}
+
+.friendMessage {
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.friendMessage button {
+    background-color: transparent;
+    color: #0071b1;
+    border: 1px solid #0073b1;
+    height: 32px;
+    width: 92px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.chatbox__container {
+    position: absolute;
+    bottom: 0;
+    height: 400px;
+    right: 5%;
+    width: 300px;
+}

@@ -1,8 +1,11 @@
 .singlePost {
     background-color: #4e4e4e;
-    animation: backInDown;
-    animation-duration: 1s;
     height: 100vh;
+}
+
+.postContent {
+    animation: fadeIn;
+    animation-duration: 1.5s;
 }
 
 .post__body > img {
@@ -99,4 +102,9 @@
 	-webkit-border-radius: 30px;
 	-moz-border-radius: 30px;
 
+}
+
+.comments__container {
+    margin-top: 10px;
+    border-top: 1px solid black;
 }

@@ -24,25 +24,32 @@ const SinglePost = props => {
 
     return (
         <div className='singlePost'>
-            <div className='talk-bubble tri-right left-in round'>
-                <div className='post__date'>
-                <span style={{ fontWeight: 700 }}>
-                    {post.username}
-                </span>{' '}
-                {post.createdAt}
+
+            <div className='myHeader'>
+                <h2 style={{ color: 'white' }}>{post.username}'s Post</h2>
+            </div>
+
+            <div className='postContent'>
+                <div className='talk-bubble tri-right left-in round'>
+                    <div className='post__date'>
+                        <span style={{ fontWeight: 700 }}>
+                            {post.username}
+                        </span>{' '}
+                        {post.createdAt}
+                    </div>
+
+                    <div>
+                        <p className='post__body'>{post.postText}</p>
+                    </div>
+
                 </div>
 
-                <div>
-                <p className='post__body'>{post.postText}</p>
-            </div>
 
-            </div>
+                <div className='comments__container'>
 
-
-            <div>
-
-                {post.commentCount > 0 && <CommentList comments={post.comments} />}
-                {Auth.loggedIn() && <CommentForm postId={post._id} />}
+                    {post.commentCount > 0 && <CommentList comments={post.comments} />}
+                    {Auth.loggedIn() && <CommentForm postId={post._id} />}
+                </div>
             </div>
         </div>
     );

@@ -37,6 +37,17 @@ const LoginForm = (props) => {
             setShowAlert(true);
         }
 
+        const username = userFormData.username;
+        const randomNum = Math.ceil(Math.random() * 10000);
+
+        const userData = {
+            username,
+            id: randomNum,
+            role: 'Member',
+        }
+
+        localStorage.setItem('currentTalkJSUser', JSON.stringify(userData));
+
         setUserFormData({
             username: '',
             password: ''

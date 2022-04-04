@@ -34,9 +34,13 @@ const PostList = ({ posts }) => {
                           </Link>
                       </div>
                       <div className='post__footer'>
-                          <ChatBubbleOutline fontSize='small'>{post.commentCount}</ChatBubbleOutline>
+                          <div>
+                              <ChatBubbleOutline fontSize='small' />{post.commentCount}
+                          </div>
                           <SportsEsportsOutlinedIcon fontSize='small' />
-                          <FavoriteBorder fontSize='small' />
+                          <div>
+                            <FavoriteBorder fontSize='small' />{post.likeCount}
+                          </div>
                           <Publish fontSize='small' />
                       </div>
                   </div>

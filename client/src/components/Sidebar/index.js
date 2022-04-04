@@ -2,6 +2,7 @@ import './style.css';
 import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
 import SidebarOption from '../SidebarOption';
+import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import VideogameAssetSharpIcon from '@mui/icons-material/VideogameAssetSharp';
 import MapSharpIcon from '@mui/icons-material/MapSharp';
 import NewspaperSharpIcon from '@mui/icons-material/NewspaperSharp';
@@ -26,6 +27,9 @@ function Sidebar(props) {
                     </Link>
                     <Link to='/connect'>
                         <SidebarOption Icon={EmojiPeopleIcon} text='Connect' />
+                    </Link>
+                    <Link to='/messages'>
+                        <SidebarOption Icon={ChatBubbleOutlineIcon} text='Messages' />
                     </Link>
                     <Link to='/reviews'>
                         <SidebarOption Icon={NewspaperSharpIcon} text='Reviews' />

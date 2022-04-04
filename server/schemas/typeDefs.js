@@ -18,7 +18,7 @@ const typeDefs = gql`
         reviewCount: Int
         posts: [Post]
         postCount: Int
-        likes: [Like]
+        likes: [Post]
     }
 
     input UpdateUserInput {
@@ -29,6 +29,11 @@ const typeDefs = gql`
         gameId: Int
         name: String
         summary: String
+    }
+
+    type Cover {
+        coverId: Int
+        url: String
     }
 
     input AddNewGame {
@@ -89,6 +94,7 @@ const typeDefs = gql`
         addPost(postText: String!): Post
         addReview(reviewText: String!): Review
         addComment(postId: ID!, commentBody: String!): Post
+        deleteComment(postId: ID!, commentId: ID!): Post
         addLike(postId: ID!, username: String!): Post
         addFriend(friendId: ID!): User
         updateUser(bio: String, input: UpdateUserInput!): User

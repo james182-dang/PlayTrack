@@ -1,0 +1,26 @@
+.myInfo {
+    display: flex;
+    width: 55%;
+    margin: 0 auto;
+    justify-content: space-around;
+}
+
+.myInfo__container {
+    width: 28%;
+}
+
+.myInfo__container>div {
+    background-color: #4e4e4e;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.myInfo__info {
+    text-align: center;
+}
+
+.myInfo__info h3 {
+    margin-bottom: 10px;
+}

@@ -3,9 +3,6 @@ import { Link } from 'react-router-dom';
 const CommentList = ({ comments }) => {
     return (
         <div>
-            <div className='card-header'>
-                <span className='text-light'>Comments</span>
-            </div>
             <div className='post'>
                 {comments &&
                   comments.map(comment => {

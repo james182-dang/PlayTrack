@@ -6,6 +6,14 @@ export const getSavedGameIds = () => {
     return savedGameIds;
 };
 
+export const getCurrentUser = () => {
+    const currentUser = localStorage.getItem('currentTalkJSUser')
+    ? JSON.parse(localStorage.getItem('currentTalkJSUser'))
+    : [];
+
+    return currentUser;
+};
+
 export const saveGameIds = (gameIdArr) => {
     if (gameIdArr.length) {
         localStorage.setItem('saved_games', JSON.stringify(gameIdArr));

@@ -32,6 +32,12 @@ const userSchema = new Schema(
         },
         savedGames: [gameSchema],
         completedGames: [gameSchema],
+        likes: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Post'
+            }
+        ],
         reviews: [
             {
                 type: Schema.Types.ObjectId,

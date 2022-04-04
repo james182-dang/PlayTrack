@@ -58,7 +58,7 @@ const GameDetails = props => {
 
     }, [])
 
-    const handleCompleteGame = async (gameId, name) => {
+    const handleCompleteGame = async (gameId) => {
         
         const gameToComplete = selectedGame.find((game) => game.gameId === gameId);
 
@@ -69,13 +69,13 @@ const GameDetails = props => {
         }
 
         try {
-            const { data } = await completeGame({
-                variables: { addGame: { gameId, name } },
+            const data = await completeGame({
+                variables: { addGame: { ...gameToComplete } },
             });
 
             console.log(data);
 
-            setSavedGameIds([...savedGameIds, gameToComplete.gameId, gameToComplete.name]);
+            setSavedGameIds([...savedGameIds, gameToComplete.gameId]);
         } catch (err) {
             console.error(err);
         }
