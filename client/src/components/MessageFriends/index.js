@@ -9,7 +9,7 @@ const MessageFriends = ({ friends }) => {
 
     useEffect(() => {
         setCurrentUser(currentUser);
-    })
+    }, [])
 
     const handleClick = async (userId) => {
 
@@ -37,7 +37,7 @@ const MessageFriends = ({ friends }) => {
               conversation.setParticipant(other);
 
               // Create and mount chatbox in container
-              this.chatbox = window.talkSession.createChatbox(conversation);
+              let chatbox = window.talkSession.createChatbox(conversation);
               this.chatbox.mount(this.container);
           }).catch(e => console.error(e));
     };

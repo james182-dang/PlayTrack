@@ -94,7 +94,6 @@ const typeDefs = gql`
         addPost(postText: String!): Post
         addReview(reviewText: String!): Review
         addComment(postId: ID!, commentBody: String!): Post
-        deleteComment(postId: ID!, commentId: ID!): Post
         addLike(postId: ID!, username: String!): Post
         addFriend(friendId: ID!): User
         updateUser(bio: String, input: UpdateUserInput!): User

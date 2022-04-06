@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
 import { COMPLETE_GAME, ADD_NOW_PLAYING } from '../utils/mutations';
-import { getSpecificGame } from '../utils/API';
+import { getSpecificGame, getGameToComplete } from '../utils/API';
 import { Button } from 'react-bootstrap';
 import { saveGameIds, getSavedGameIds, nowPlayingIds, getNowPlayingIds } from '../utils/localStorage';
 import Auth from '../utils/auth';
@@ -10,6 +10,8 @@ import Auth from '../utils/auth';
 const GameDetails = props => {
 
     const [selectedGame, setSelectedGame] = useState([]);
+
+    const [gameToSave, setGameToSave] = useState({ gameId: '', name: ''})
 
     const [savedGameIds, setSavedGameIds] = useState(getSavedGameIds());
 
@@ -23,7 +25,7 @@ const GameDetails = props => {
 
     useEffect(() => {
         return () => saveGameIds(savedGameIds);
-    });
+    }, []);
 
     useEffect(() => {
 
@@ -51,31 +53,34 @@ const GameDetails = props => {
             }));
 
             setSelectedGame(gameData);
-
         }
 
         getGameId(gameId);
-
-    }, [])
+    }, []);
 
     const handleCompleteGame = async (gameId) => {
-        
-        const gameToComplete = selectedGame.find((game) => game.gameId === gameId);
-
         const token = Auth.loggedIn() ? Auth.getToken() : null;
 
         if (!token) {
             return false;
         }
 
+        const name = gameToSave.name;
+        const gamesId = gameToSave.gameId;
+
+        const gameToSaveData = {
+            name,
+            gamesId
+        }
+
         try {
             const data = await completeGame({
-                variables: { addGame: { ...gameToComplete } },
+                variables: { addGame: { ...gameToSaveData } },
             });
 
             console.log(data);
 
-            setSavedGameIds([...savedGameIds, gameToComplete.gameId]);
+            setSavedGameIds([...savedGameIds, gameToSaveData]);
         } catch (err) {
             console.error(err);
         }
@@ -111,7 +116,7 @@ const GameDetails = props => {
                 return (
                     <div key={game.gameId}>
                         <div className='myHeader'>
-                            <h2>
+                            <h2 value={gameToSave.name}>
                                 {game.name}
                             </h2>
                         </div>
@@ -160,6 +165,10 @@ const GameDetails = props => {
 
                         <div className='summary'>
                             Summary: {game.summary}
+                        </div>
+
+                        <div value={gameToSave.gameId}>
+                            {game.gameId}
                         </div>
                     </div>
                 );
