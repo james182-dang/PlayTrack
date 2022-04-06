@@ -133,10 +133,11 @@ export const ADD_NOW_PLAYING = gql`
 `;
 
 export const REMOVE_COMPLETED_GAME = gql`
-    mutation removeCompletedGame($gameId: ID!) {
-        removeCompletedGame(removeCompletedGame: $gameId) {
+    mutation removeCompletedGame($_id: ID!) {
+        removeCompletedGame(removeCompletedGame: $_id) {
             _id
             completedGames {
+                _id
                 gameId
             }
         }

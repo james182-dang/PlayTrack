@@ -11,6 +11,7 @@ import PowerIcon from '@mui/icons-material/Power';
 import BoltIcon from '@mui/icons-material/Bolt';
 import PowerOffIcon from '@mui/icons-material/PowerOff';
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
+import HelpIcon from '@mui/icons-material/Help';
 import SettingsIcon from '@mui/icons-material/Settings';
 
 
@@ -39,6 +40,9 @@ function Sidebar(props) {
                     </Link>
                     <Link to='/settings'>
                         <SidebarOption Icon={SettingsIcon} text='Settings' />
+                    </Link>
+                    <Link to='/faq'>
+                        <SidebarOption Icon={HelpIcon} text='FAQ' />
                     </Link>
                     <a href='/' onClick={Auth.logout} className='logoutTab'>
                         <SidebarOption Icon={PowerOffIcon} text='Logout' />

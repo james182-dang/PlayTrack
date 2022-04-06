@@ -26,6 +26,7 @@ const typeDefs = gql`
     }
 
     type Game {
+        _id: ID!
         gameId: Int
         name: String
         summary: String

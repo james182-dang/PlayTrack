@@ -196,3 +196,31 @@ a {
   background-color: #4e4e4e;
   height: 100vh;
 }
+
+/* FAQ CSS */
+
+.FAQ {
+  background-color: #4e4e4e;
+  height: 100vh;
+  overflow-y: scroll
+}
+
+.FAQContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 50vw;
+}
+
+.FAQContent h2 {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.FAQContent h4 {
+  text-align: center;
+  width: 80%;
+  line-height: 1.25;
+  margin-bottom: 15px;
+}
