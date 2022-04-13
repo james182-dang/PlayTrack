@@ -50,7 +50,7 @@ export const getSpecificGame = (gameId) => {
         });
 };
 
-export const getGameToComplete = (gameId) => {
+export const getGameToSave = (gameId) => {
     return fetch(`https://id.twitch.tv/oauth2/token?client_id=z0veutl1ez27ss3pfg23qobc0xhu5i&client_secret=csrkkvsobd4mm5ywpelns56qpbt4jx&grant_type=client_credentials`, {
         method: 'POST',
         headers: {
@@ -74,4 +74,4 @@ export const getGameToComplete = (gameId) => {
                 where id = ${gameId};`
             })
         });
-};
+}

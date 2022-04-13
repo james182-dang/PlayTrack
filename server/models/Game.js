@@ -2,13 +2,10 @@ const { Schema } = require('mongoose');
 
 const gameSchema = new Schema({
     gameId: {
-        type: String,
+        type: Number,
         required: true,
     },
-    image: {
-        type: String,
-    },
-    summary: {
+    name: {
         type: String,
     }
 });

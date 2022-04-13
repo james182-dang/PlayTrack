@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
 import { COMPLETE_GAME, ADD_NOW_PLAYING } from '../utils/mutations';
-import { getSpecificGame, getGameToComplete } from '../utils/API';
+import { getSpecificGame, getGameToSave } from '../utils/API';
 import { Button } from 'react-bootstrap';
 import { saveGameIds, getSavedGameIds, nowPlayingIds, getNowPlayingIds } from '../utils/localStorage';
 import Auth from '../utils/auth';
@@ -58,29 +58,50 @@ const GameDetails = props => {
         getGameId(gameId);
     }, []);
 
+    useEffect(() => {
+
+        async function getGameToSave(gameId) {
+
+            const response = await getSpecificGame(gameId);
+
+            if (!response.ok) {
+                throw new Error('Something went wrong...');
+            }
+
+            const result = await response.json();
+
+            const gameData = result.map((game) => ({
+
+                gameId: game.id,
+                name: game.name
+
+            }));
+
+            setGameToSave(gameData);
+        }
+
+        getGameToSave(gameId);
+    }, []);
+
     const handleCompleteGame = async (gameId) => {
+
+        const gameToComplete = gameToSave.find((game) => game.gameId === gameId);
+
         const token = Auth.loggedIn() ? Auth.getToken() : null;
 
         if (!token) {
             return false;
         }
 
-        const name = gameToSave.name;
-        const gamesId = gameToSave.gameId;
-
-        const gameToSaveData = {
-            name,
-            gamesId
-        }
 
         try {
             const data = await completeGame({
-                variables: { addGame: { ...gameToSaveData } },
+                variables: { addGame: { ...gameToComplete } },
             });
 
             console.log(data);
 
-            setSavedGameIds([...savedGameIds, gameToSaveData]);
+            setSavedGameIds([...savedGameIds, gameToComplete.gameId]);
         } catch (err) {
             console.error(err);
         }

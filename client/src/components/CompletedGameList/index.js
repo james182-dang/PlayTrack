@@ -4,9 +4,9 @@ function CompletedGameList({ games }) {
         <div className='completedGameList'>
             {games &&
               games.map(completedGame => (
-                  <div key={completedGame.id}>
+                  <div key={completedGame.gameId}>
                       <p>
-                          {completedGame.gameId}
+                          {completedGame.name}
                       </p>
                   </div>
               ))}

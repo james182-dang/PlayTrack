@@ -29,17 +29,18 @@ const typeDefs = gql`
         _id: ID!
         gameId: Int
         name: String
-        summary: String
-    }
-
-    type Cover {
-        coverId: Int
-        url: String
     }
 
     input AddNewGame {
-        gameId: Int!
-        name: String!
+        gameId: Int
+        name: String
+        summary: String
+        cover: String
+        coverId: Int
+        platforms: [String]
+        platformId: [Int]
+        genres: [String]
+        genresId: [Int]
     }
 
     input AddNowPlaying {

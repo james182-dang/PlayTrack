@@ -44,6 +44,7 @@ const Explore = () => {
                 name: game.name,
                 cover: game.cover,
                 platforms: game.platforms,
+                
             }));
 
             setSearchedGames(gameData);

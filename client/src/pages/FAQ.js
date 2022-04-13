@@ -14,7 +14,7 @@ const FAQ = () => {
                 </h2>
 
                 <h4>
-                    Playtrack was started when I went through
+                    Playtrack began when I went through
                     a period of completing many 3-5 hour games
                     and started to lose track of what I'd completed.
                     Beginning with just a way to track completed games,
@@ -31,6 +31,11 @@ const FAQ = () => {
                     should be to head to the Explore page and search for
                     a game. You can then add the game to your Completed games,
                     Followed games, or your Now Playing.
+
+                    <br />
+
+                    On the technical side, PlayTrack is built with React
+                    and graphQL, utilizing the IGDB database for game data.
                 </h4>
 
                 <h2>
@@ -66,7 +71,7 @@ const FAQ = () => {
 
                 <h4>
                     There's a lot of planned features for the future of 
-                    PlayTrack. Profile levelling, connection to Steam/PSN/Xbox Live
+                    PlayTrack. Profile levelling, connection to Steam/PSN/Xbox Live,
                     and updating the Now Playing feature to reflect what you are playing 
                     in real time are currently next on the features to
                     implement. If you have any suggestions, just send a
