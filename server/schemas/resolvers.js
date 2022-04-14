@@ -51,6 +51,12 @@ const resolvers = {
               .populate('reviews')
               .populate('friends');
         },
+
+        completedGames: async (parent, { username }) => {
+            return User.findOne({ username })
+              .select('-__v -password')
+              .populate('completedGames');    
+        }
     },
 
     Mutation: {

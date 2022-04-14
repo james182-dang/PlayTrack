@@ -60,6 +60,7 @@ const App = () => {
                 <Route exact path='/login' component={LoginForm} />
                 <Route exact path='/signup' component={SignupForm} />
                 <Route exact path='/reviews' component={Reviews} />
+                <Route exact path='/reviews/:username' component={Reviews} />
                 <Route exact path='/settings' component={Settings} />
                 <Route exact path='/faq' component={FAQ} />
               </Switch>

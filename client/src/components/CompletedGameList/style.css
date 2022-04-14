@@ -1,0 +1,25 @@
+.completedGameList {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: white;
+    background-color: black;
+    border: 1px solid black;
+    border-radius: 20px;
+    max-height: 25vh;
+    width: 50vw;
+    overflow-y: scroll;
+}
+
+.completedGamesContainer {
+    margin: 10px 0px 0px 20px;
+}
+
+.completedGamesContainer h3 {
+    border-bottom: 1px solid #4e4e4e;
+}
+
+.completedGamesContent Link {
+    color: white;
+    text-decoration: none;
+}

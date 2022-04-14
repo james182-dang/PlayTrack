@@ -29,6 +29,9 @@ const typeDefs = gql`
         _id: ID!
         gameId: Int
         name: String
+        createdAt: String
+        reviews: [Review]
+        reviewCount: Int
     }
 
     input AddNewGame {
@@ -88,6 +91,7 @@ const typeDefs = gql`
         post(_id: ID!): Post
         reviews(username: String): [Review]
         review(_id: ID!): Review
+        completedGames(username: String!): User
     }
 
     type Mutation {

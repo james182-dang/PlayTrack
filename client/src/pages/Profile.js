@@ -73,7 +73,7 @@ const Profile = () => {
                       : 'You have no completed games.'}
                 </h4>
 
-                <CompletedGameList games={user.completedGames} />
+                <CompletedGameList user={user} games={user.completedGames} />
             </div>
 
             <div>
@@ -84,7 +84,7 @@ const Profile = () => {
                 )}
             </div>
 
-            <div>
+            <div className='profilePosts'>
                 <PostList posts={user.posts} />
             </div>
 

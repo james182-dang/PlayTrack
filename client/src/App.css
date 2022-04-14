@@ -1,3 +1,5 @@
+/* General CSS */
+
 body {
   --twitter-color: #50b7f5;
   --twitter-background: #e6ecf0;
@@ -12,6 +14,7 @@ body {
 
 .container {
   flex: 0.57;
+  max-width: 57vw;
   border-right: var(--twitter-background) 1px solid;
   min-width: fit-content;
   overflow-y: scroll;
@@ -27,14 +30,10 @@ body {
   color: white;
 }
 
-
-
 .searchBar {
   margin-left: 150px;
   margin-top: 15px;
 }
-
-
 
 .feedParent {
   height: 93vh;
@@ -85,7 +84,7 @@ body {
 	display: flex;
 	background: #282828; 
 	-webkit-box-shadow: 0 0 40px rgba(0,0,0,0.3); 
-	        box-shadow: 0 0 40px rgba(0,0,0,0.3);
+  box-shadow: 0 0 40px rgba(0,0,0,0.3);
 }
 
 .main_card h4 {
@@ -169,6 +168,7 @@ a {
   color: #D3D3D3;
 }
 
+
 /* Connect CSS */
 
 .connect {
@@ -183,6 +183,14 @@ a {
   height: 100vh;
 }
 
+.noReviews {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 50vw;
+}
+
 /* Profile CSS */
 
 .profile {
@@ -190,11 +198,19 @@ a {
   height: 100vh;
 }
 
+.profilePosts {
+  height: 50vh;
+  overflow-y: scroll;
+}
 /* gameDetails CSS */
 
 .gameDetails {
   background-color: #4e4e4e;
   height: 100vh;
+}
+
+.reviewsContainer {
+  margin-top: 20px;
 }
 
 /* FAQ CSS */

@@ -4,7 +4,9 @@ import { useQuery, useMutation } from '@apollo/client';
 import { COMPLETE_GAME, ADD_NOW_PLAYING } from '../utils/mutations';
 import { getSpecificGame, getGameToSave } from '../utils/API';
 import { Button } from 'react-bootstrap';
-import { saveGameIds, getSavedGameIds, nowPlayingIds, getNowPlayingIds } from '../utils/localStorage';
+import { saveGameIds, getSavedGameIds, 
+         nowPlayingIds, getNowPlayingIds } from '../utils/localStorage';
+import ReviewsList from '../components/ReviewsList';
 import Auth from '../utils/auth';
 
 const GameDetails = props => {
@@ -22,6 +24,10 @@ const GameDetails = props => {
     const [addNowPlaying, { NPerror }] = useMutation(ADD_NOW_PLAYING);
 
     const { id: gameId } = useParams();
+
+    // const { loading, data } = useQuery(QUERY_REVIEWS);
+
+    // const reviews = data?.reviews || [];
 
     useEffect(() => {
         return () => saveGameIds(savedGameIds);
@@ -179,22 +185,21 @@ const GameDetails = props => {
                               </Button>
                         </div>
 
-                        <div>
-                            
-                        </div>
-
-
                         <div className='summary'>
                             Summary: {game.summary}
                         </div>
 
-                        <div value={gameToSave.gameId}>
-                            {game.gameId}
+                        <div className='reviewsContainer'>
+                           <h2>
+                               Reviews for {game.name}
+                           </h2>
+
+
                         </div>
+
                     </div>
                 );
             })}
-
 
         </div>
     )

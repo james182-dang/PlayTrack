@@ -10,8 +10,6 @@ import './style.css';
 
 const PostList = ({ posts }) => {
 
-
-
     return (
         <div className='post'>
             {posts &&

@@ -19,11 +19,16 @@ const reviewSchema = new Schema(
             type: String,
             required: true
         },
+        game: {
+            type: Schema.Types.ObjectId,
+            ref: 'Game'
+        },
         comments: [commentSchema]
     },
     {
         toJSON: {
-            getters: true
+            getters: true,
+            virtuals: true
         }
     }
 );

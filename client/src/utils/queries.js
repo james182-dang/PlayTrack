@@ -50,6 +50,23 @@ export const QUERY_POST = gql`
     }
 `;
 
+export const QUERY_GAME = gql`
+    query game($gameId: Int) {
+        game(gameId: $gameId) {
+            _id
+            gameId
+            name
+            reviewCount
+            reviews {
+                reviewText
+                createdAt
+                username
+                comments
+            }
+        }
+    }
+`;
+
 export const QUERY_REVIEWS = gql`
     query review($username: String) {
         reviews(username: $username) {
@@ -97,6 +114,8 @@ export const QUERY_USER = gql`
             postCount
             completedGames {
                 gameId
+                name
+                createdAt
             }
             friends {
                 _id
@@ -124,6 +143,8 @@ export const QUERY_COMPLETED_GAMES = gql`
             username
             completedGames {
                 gameId
+                name
+                createdAt
             }
         }
     }
@@ -136,6 +157,7 @@ export const QUERY_ME = gql`
             email
             friendCount
             postCount
+            reviewCount
             completedGameCount
             likes {
                 _id
@@ -143,6 +165,8 @@ export const QUERY_ME = gql`
 
             completedGames {
                 gameId
+                name
+                createdAt
             }
 
             posts {
@@ -201,7 +225,7 @@ export const QUERY_ME_BASIC = gql`
             }
 
             completedGames {
-                gameId
+                name
             }
         }
     }
