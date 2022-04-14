@@ -1,0 +1,18 @@
+.reviewBox {
+    display: flex;
+    margin: 0 15vw 0 12vw;
+    justify-content: center;
+    border-radius: 15px;
+    background-color: #4e4e4e;
+}
+
+.reviewBox > form {
+    display: flex;
+    flex-direction: column;
+}
+
+.reviewBox__input {
+    padding-top: 10px;
+    width: 100%;
+}
+

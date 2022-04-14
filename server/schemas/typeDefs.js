@@ -87,6 +87,7 @@ const typeDefs = gql`
         me: User
         users: [User]
         user(username: String!): User
+        game(gameId: Int!): Game
         posts(username: String): [Post]
         post(_id: ID!): Post
         reviews(username: String): [Review]

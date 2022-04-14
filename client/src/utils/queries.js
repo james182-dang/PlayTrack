@@ -81,6 +81,11 @@ export const QUERY_REVIEWS = gql`
                 username
                 commentBody
             }
+            
+            game {
+                gameId
+                name
+            }
         }
     }
 `;

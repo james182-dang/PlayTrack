@@ -5,8 +5,9 @@ import { COMPLETE_GAME, ADD_NOW_PLAYING } from '../utils/mutations';
 import { getSpecificGame, getGameToSave } from '../utils/API';
 import { Button } from 'react-bootstrap';
 import { saveGameIds, getSavedGameIds, 
-         nowPlayingIds, getNowPlayingIds } from '../utils/localStorage';
+        nowPlayingIds, getNowPlayingIds } from '../utils/localStorage';
 import ReviewsList from '../components/ReviewsList';
+import ReviewBox from '../components/ReviewBox';
 import Auth from '../utils/auth';
 
 const GameDetails = props => {
@@ -194,7 +195,7 @@ const GameDetails = props => {
                                Reviews for {game.name}
                            </h2>
 
-
+                            <ReviewBox game={gameId} />
                         </div>
 
                     </div>
