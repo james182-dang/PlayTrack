@@ -19,9 +19,13 @@ const reviewSchema = new Schema(
             type: String,
             required: true
         },
-        game: {
-            type: Schema.Types.ObjectId,
-            ref: 'Game'
+        gameName: {
+            type: String,
+            required: true
+        },
+        gameId: {
+            type: Number,
+            required: true
         },
         comments: [commentSchema]
     },

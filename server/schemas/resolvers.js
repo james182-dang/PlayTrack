@@ -106,7 +106,7 @@ const resolvers = {
 
                 await User.findByIdAndUpdate(
                     { _id: context.user._id },
-                    { $push: { reviews: review._id } },
+                    { $push: { reviews: review._id, gameId: review.gameId, gameName: review.gameName } },
                     { new: true }
                 );
 

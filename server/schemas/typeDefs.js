@@ -68,6 +68,8 @@ const typeDefs = gql`
         username: String
         comments: [Comment]
         commentCount: Int
+        gameId: Int
+        gameName: String
     }
 
     type Comment {
@@ -99,7 +101,7 @@ const typeDefs = gql`
         login(username: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
         addPost(postText: String!): Post
-        addReview(reviewText: String!): Review
+        addReview(reviewText: String!, gameId: Int!, gameName: String!): Review
         addComment(postId: ID!, commentBody: String!): Post
         addLike(postId: ID!, username: String!): Post
         addFriend(friendId: ID!): User

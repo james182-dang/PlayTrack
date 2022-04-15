@@ -195,7 +195,7 @@ const GameDetails = props => {
                                Reviews for {game.name}
                            </h2>
 
-                            <ReviewBox game={gameId} />
+                            <ReviewBox gameId={gameId} gameName={game.name} />
                         </div>
 
                     </div>

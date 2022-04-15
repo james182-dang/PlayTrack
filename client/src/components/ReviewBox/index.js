@@ -5,9 +5,13 @@ import { QUERY_REVIEWS, QUERY_ME } from '../../utils/queries';
 import Button from '@mui/material/Button';
 import './style.css';
 
-function ReviewBox(game) {
+function ReviewBox(props) {
+
+    const gameId = props.gameId;
+    const gameName = props.gameName;
+
     const [reviewText, setReviewText] = useState('');
-    const [reviewFormData, setReviewFormData] = useState({ reviewText: '' })
+    const [reviewFormData, setReviewFormData] = useState({ reviewText: '', gameId: '', gameName: '' })
     const [characterCount, setCharacterCount] = useState(0);
     const [addReview, { error }] = useMutation(ADD_REVIEW, {
         update(cache, { data: { addReview }}) {
@@ -44,7 +48,7 @@ function ReviewBox(game) {
 
         try {
             await addReview({
-                variables: { reviewText }
+                variables: { reviewText, gameId: parseInt(gameId, 10), gameName }
             });
 
             setReviewText('');
