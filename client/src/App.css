@@ -79,6 +79,7 @@ body {
 	width: 50vw;
 	height: 30vh;
 	margin: 5px 0 0 5px;
+  overflow-y: scroll;
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;

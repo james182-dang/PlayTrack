@@ -2,11 +2,12 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
 import { COMPLETE_GAME, ADD_NOW_PLAYING } from '../utils/mutations';
+import { QUERY_GAME_REVIEWS } from '../utils/queries';
 import { getSpecificGame, getGameToSave } from '../utils/API';
 import { Button } from 'react-bootstrap';
 import { saveGameIds, getSavedGameIds, 
         nowPlayingIds, getNowPlayingIds } from '../utils/localStorage';
-import ReviewsList from '../components/ReviewsList';
+import ReviewList from '../components/ReviewList';
 import ReviewBox from '../components/ReviewBox';
 import Auth from '../utils/auth';
 
@@ -26,9 +27,11 @@ const GameDetails = props => {
 
     const { id: gameId } = useParams();
 
-    // const { loading, data } = useQuery(QUERY_REVIEWS);
+    const { loading, data } = useQuery(QUERY_GAME_REVIEWS, {
+        variables: { gameId: parseInt(gameId, 10) }
+    });
 
-    // const reviews = data?.reviews || [];
+    const reviews = data?.reviews || [];
 
     useEffect(() => {
         return () => saveGameIds(savedGameIds);
@@ -194,6 +197,10 @@ const GameDetails = props => {
                            <h2>
                                Reviews for {game.name}
                            </h2>
+
+                           <div className='gameReviews'>
+                                <ReviewList reviews={reviews} />
+                           </div>
 
                             <ReviewBox gameId={gameId} gameName={game.name} />
                         </div>

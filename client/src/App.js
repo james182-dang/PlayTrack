@@ -5,6 +5,7 @@ import { setContext } from '@apollo/client/link/context';
 import Sidebar from './components/Sidebar';
 import Feed from './pages/Feed';
 import SinglePost from './components/SinglePost';
+import SingleReview from './components/SingleReview';
 import Messages from './components/Messages';
 import Explore from './pages/Explore';
 import GameDetails from './pages/GameDetails'
@@ -60,7 +61,7 @@ const App = () => {
                 <Route exact path='/login' component={LoginForm} />
                 <Route exact path='/signup' component={SignupForm} />
                 <Route exact path='/reviews' component={Reviews} />
-                <Route exact path='/reviews/:username' component={Reviews} />
+                <Route exact path='/reviews/:id' component={SingleReview} />
                 <Route exact path='/settings' component={Settings} />
                 <Route exact path='/faq' component={FAQ} />
               </Switch>

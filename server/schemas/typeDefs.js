@@ -92,7 +92,7 @@ const typeDefs = gql`
         game(gameId: Int!): Game
         posts(username: String): [Post]
         post(_id: ID!): Post
-        reviews(username: String): [Review]
+        reviews(gameId: Int!): [Review]
         review(_id: ID!): Review
         completedGames(username: String!): User
     }

@@ -97,6 +97,28 @@ export const QUERY_REVIEW = gql`
             reviewText
             createdAt
             username
+            gameId
+            gameName
+            commentCount
+            comments {
+                _id
+                createdAt
+                username
+                commentBody
+            }
+        }
+    }
+`;
+
+export const QUERY_GAME_REVIEWS = gql`
+    query reviews($gameId: Int!) {
+        reviews(gameId: $gameId) {
+            _id
+            reviewText
+            createdAt
+            username
+            gameId
+            gameName
             commentCount
             comments {
                 _id

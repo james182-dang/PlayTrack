@@ -28,13 +28,12 @@ const resolvers = {
             return Post.findOne({ _id });
         },
 
-        reviews: async (parent, { username }) => {
-            const params = username ? { username } : {};
+        reviews: async (parent, { gameId }) => {
+            const params = gameId ? { gameId } : {};
             return Review.find(params).sort({ createdAt: -1 });
         },
 
-        review: async (parent, { username }) => {
-            const params = username ? { username } : {};
+        review: async (parent, { _id }) => {
             return Review.findOne({ _id });
         },
 
