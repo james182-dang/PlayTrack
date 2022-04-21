@@ -1,5 +1,6 @@
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
+import UploadImage from '../components/UploadImage';
 import Auth from '../utils/auth';
 
 const Settings = () => {
@@ -38,7 +39,7 @@ const Settings = () => {
                 </h5>
 
                 <h5>
-                    
+                    <UploadImage />
                 </h5>
             </div>
         </div>

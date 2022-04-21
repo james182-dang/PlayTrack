@@ -74,4 +74,17 @@ export const getGameToSave = (gameId) => {
                 where id = ${gameId};`
             })
         });
-}
+};
+
+export const uploadProfileImage = (base64EncodedImage) => {
+    return fetch(`https://api.cloudinary.com/v1_1/dzd5l8amr/image/upload`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            file: base64EncodedImage,
+            upload_preset: 'profile_pic'
+        })
+    })
+};
