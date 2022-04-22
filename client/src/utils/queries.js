@@ -7,6 +7,7 @@ export const QUERY_POSTS = gql`
             postText
             createdAt
             username
+            userImage
             commentCount
             comments {
                 _id
@@ -32,6 +33,7 @@ export const QUERY_POST = gql`
             postText
             createdAt
             username
+            userImage
             commentCount
             comments {
                 _id
@@ -136,6 +138,8 @@ export const QUERY_USER = gql`
             _id
             username
             email
+            bio
+            image
             friendCount
             completedGameCount
             postCount
@@ -182,6 +186,8 @@ export const QUERY_ME = gql`
             _id
             username
             email
+            bio
+            image
             friendCount
             postCount
             reviewCount
@@ -200,6 +206,8 @@ export const QUERY_ME = gql`
                 _id
                 postText
                 createdAt
+                username
+                userImage
                 commentCount
                 comments {
                     _id
@@ -242,6 +250,7 @@ export const QUERY_ME_BASIC = gql`
             _id
             username
             email
+            image
             completedGameCount
             friendCount
             postCount

@@ -61,7 +61,7 @@ function Post({ username, verified, text, image, avatar }) {
     return (
         <div className='post'>
             <div className='post__avatar'>
-                <Avatar src={avatar} />
+                <Avatar src={image} />
             </div>
             <div className='post__body'>
                 <div className='post__header'>

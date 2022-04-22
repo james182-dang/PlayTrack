@@ -20,6 +20,9 @@ const postSchema = new Schema(
             type: String,
             required: true
         },
+        userImage: {
+            type: String,
+        },
         comments: [commentSchema],
         likes: [likeSchema]
     },

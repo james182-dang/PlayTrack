@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Image, Transformation, CloudinaryContext} from '@cloudinary/react';
 
 const ImageDisplay = ({ image }) => {
 

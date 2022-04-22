@@ -83,9 +83,33 @@ const resolvers = {
             return { token, user };
         },
 
+        addProfilePic: async (parent, { image }, context) => {
+            if (context.user) {
+                const updatedUser = await User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { image: image },
+                    { new: true, runValidators: true }
+                );
+
+                return updatedUser;
+            }
+        },
+
+        addBio: async (parent, { bio }, context) => {
+            if (context.user) {
+                const updatedUser = await User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { bio: bio },
+                    { new: true, runValidators: true }
+                );
+
+                return updatedUser;
+            }
+        },
+
         addPost: async (parent, args, context) => {
             if (context.user) {
-                const post = await Post.create({ ...args, username: context.user.username });
+                const post = await Post.create({ ...args, username: context.user.username, userImage: context.user.image });
 
                 await User.findByIdAndUpdate(
                     { _id: context.user._id },

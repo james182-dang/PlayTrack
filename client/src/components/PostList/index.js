@@ -22,6 +22,7 @@ const PostList = ({ posts }) => {
                             className='post__header'
                             style={{ textDecoration: 'none' }}
                           >
+                              {post.userImage}
                               {post.username}
                           </Link>{' '}
                          {post.createdAt}

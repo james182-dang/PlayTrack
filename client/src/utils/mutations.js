@@ -24,6 +24,26 @@ export const ADD_USER = gql`
     }
 `;
 
+export const ADD_PROFILE_PIC = gql`
+    mutation addProfilePic($_id: ID!, $image: String!) {
+        addProfilePic(_id: $_id, image: $image) {
+                _id
+                username
+                image
+        }
+    }
+`;
+
+export const ADD_BIO = gql`
+    mutation addBio($_id: ID!, $bio: String!) {
+        addBio(_id: $_id, bio: $bio) {
+            _id
+            username
+            bio
+        }
+    }
+`;
+
 export const ADD_FRIEND = gql`
     mutation addFriend($id: ID!) {
         addFriend(friendId: $id) {
@@ -55,6 +75,13 @@ export const ADD_POST = gql`
             postText
             createdAt
             username
+            userImage
+            likeCount
+            likes {
+                _id
+                username
+                createdAt
+            }
             commentCount
             comments {
                 _id

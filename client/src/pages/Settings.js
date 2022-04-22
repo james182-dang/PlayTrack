@@ -1,11 +1,32 @@
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
+import { ADD_PROFILE_PIC } from '../utils/mutations';
 import UploadImage from '../components/UploadImage';
 import Auth from '../utils/auth';
 
 const Settings = () => {
 
     const { loading, data } = useQuery(QUERY_ME);
+
+    const [addProfilePic, { error }] = useMutation(ADD_PROFILE_PIC, {
+        update(cache, { data: { image }}) {
+            try {
+                const { image } = cache.readQuery({ query: QUERY_ME });
+                cache.writeQuery({
+                    query: QUERY_ME,
+                    data: { user: [addProfilePic, ...image] }
+                })
+            } catch (e) {
+                console.error(e);
+            }
+
+            const { me } = cache.readQuery({ query: QUERY_ME });
+            cache.writeQuery({
+                query: QUERY_ME,
+                data: { me: { ...me, image: [...me.image, addProfilePic] } }
+            });
+        }
+    });
 
     const user = data?.me || {};
 
