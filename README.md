@@ -8,5 +8,3 @@ PlayTrack is built with...
 * IGDB API
 * bcrypt
 * GraphQL
-
-PlayTrack's front-end is not yet complete! Screenshots and more will be coming as the project progresses.
