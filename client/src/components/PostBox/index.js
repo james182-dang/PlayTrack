@@ -1,6 +1,6 @@
 import './style.css';
 import { useState } from 'react';
-import { useMutation } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { ADD_POST } from '../../utils/mutations';
 import { QUERY_POSTS, QUERY_ME } from '../../utils/queries';
 import Avatar from '@mui/material/Avatar';
@@ -31,6 +31,8 @@ function PostBox() {
         }
     });
 
+    const { loading, data } = useQuery(QUERY_ME);
+
     const handleChange = event => {
 
         const { name, value } = event.target;
@@ -46,8 +48,13 @@ function PostBox() {
         event.preventDefault();
 
         try {
+
+            const user = data?.me;
+
+            const userImage = user.image;
+
             await addPost({
-                variables: { postText }
+                variables: { userImage, postText }
             });
 
             setPostText('');
@@ -60,7 +67,6 @@ function PostBox() {
     return (
         <div className='postBox'>
             <form onSubmit={sendPost}>
-
                 <div className='postBox__input'>
                     <input
                         value={postText}

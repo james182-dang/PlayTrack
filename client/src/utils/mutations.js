@@ -25,8 +25,8 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_PROFILE_PIC = gql`
-    mutation addProfilePic($_id: ID!, $image: String!) {
-        addProfilePic(_id: $_id, image: $image) {
+    mutation addProfilePic($image: String!) {
+        addProfilePic(image: $image) {
                 _id
                 username
                 image
@@ -69,8 +69,8 @@ export const UPDATE_USER = gql`
 `;
 
 export const ADD_POST = gql`
-    mutation addPost($postText: String!) {
-        addPost(postText: $postText) {
+    mutation addPost($userImage: String!, $postText: String!) {
+        addPost(userImage: $userImage, postText: $postText) {
             _id
             postText
             createdAt
@@ -171,6 +171,14 @@ export const REMOVE_COMPLETED_GAME = gql`
                 _id
                 gameId
             }
+        }
+    }
+`;
+
+export const DELETE_POST = gql`
+    mutation deletePost($postId: ID!) {
+        deletePost(postId: $postId) {
+        _id   
         }
     }
 `;

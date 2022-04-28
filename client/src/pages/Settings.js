@@ -1,6 +1,6 @@
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
-import { ADD_PROFILE_PIC } from '../utils/mutations';
+import { ADD_PROFILE_PIC, ADD_BIO } from '../utils/mutations';
 import UploadImage from '../components/UploadImage';
 import Auth from '../utils/auth';
 
@@ -24,6 +24,26 @@ const Settings = () => {
             cache.writeQuery({
                 query: QUERY_ME,
                 data: { me: { ...me, image: [...me.image, addProfilePic] } }
+            });
+        }
+    });
+
+    const [addBio, { bioError }] = useMutation(ADD_BIO, {
+        update(cache, { data: { bio }}) {
+            try {
+                const { bio } = cache.readQuery({ query: QUERY_ME });
+                cache.writeQuery({
+                    query: QUERY_ME,
+                    data: { user: [addBio, ...bio] }
+                })
+            } catch (e) {
+                console.error(e);
+            }
+
+            const { me } = cache.readQuery({ query: QUERY_ME });
+            cache.writeQuery({
+                query: QUERY_ME,
+                data: { me: { ...me, bio: [...me.bio, addBio] } }
             });
         }
     });

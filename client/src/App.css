@@ -63,6 +63,12 @@ body {
   height: auto;
 }
 
+.profile__image {
+  height: 100%;
+}
+
+
+
 .card__title {
   font-size: 1em;
   margin: 0 0 .3em;
@@ -203,6 +209,12 @@ a {
   height: 50vh;
   overflow-y: scroll;
 }
+
+.bio_text {
+  width: 50%;
+  border-bottom: 1px solid #4e4e4e;
+}
+
 /* gameDetails CSS */
 
 .gameDetails {

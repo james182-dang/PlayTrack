@@ -109,7 +109,7 @@ const resolvers = {
 
         addPost: async (parent, args, context) => {
             if (context.user) {
-                const post = await Post.create({ ...args, username: context.user.username, userImage: context.user.image });
+                const post = await Post.create({ ...args, username: context.user.username });
 
                 await User.findByIdAndUpdate(
                     { _id: context.user._id },
@@ -235,6 +235,18 @@ const resolvers = {
             }
 
             throw new AuthenticationError('You need to be logged in!');
+        },
+
+        deletePost: async (parent, { postId }, context) => {
+            if (context.user) {
+                const deletedPost = await Post.findByIdAndDelete(
+                    { _id: postId }
+                );
+
+                return deletedPost;
+            }
+
+            throw new AuthenticationError('You must be logged in to delete a post!');
         }
     }
 };

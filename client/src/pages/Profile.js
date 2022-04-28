@@ -52,12 +52,12 @@ const Profile = () => {
 
             <div>
                 <div className='main_card'>
-                    <div>
-                        <img src={user.image} className='card_image'></img>
+                    <div className='image'>
+                        <img src={user.image} className='profile__image'></img>
                     </div>
 
                     <div>
-                        <h4>
+                        <h4 className='bio_text'>
                             {!loading && user.bio
                                 ? `${user.bio}`
                                 : `${user.username} has not set up a bio.`}
@@ -66,18 +66,15 @@ const Profile = () => {
                         <h4>
                             {userParam ? `${user.username}'s ` : 'Your'} favorite game
                         </h4>
+
+                        <h4>
+                            Joined {user.createdAt}!
+                        </h4>
                     </div>
                 </div>
             </div>
 
             <div>
-
-                <h4>
-                    {! loading && user.completedGameCount
-                      ? `Viewing ${user.completedGameCount} completed ${user.completedGameCount === 1 ? 'game' : 'games'}`
-                      : 'You have no completed games.'}
-                </h4>
-
                 <CompletedGameList user={user} games={user.completedGames} />
             </div>
 

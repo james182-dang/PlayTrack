@@ -195,7 +195,7 @@ const GameDetails = props => {
 
                         <div className='reviewsContainer'>
                            <h2>
-                               Reviews for {game.name}
+                               PlayTrack User Reviews for {game.name}
                            </h2>
 
                            <div className='gameReviews'>

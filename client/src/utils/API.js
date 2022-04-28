@@ -29,8 +29,8 @@ export const getSpecificGame = (gameId) => {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-        }
-    })
+            }
+        })
         .then(response => response.json())
         .then(data => {
             const accessToken = data.access_token;
@@ -55,8 +55,8 @@ export const getGameToSave = (gameId) => {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-        }
-    })
+            }
+        })
         .then(response => response.json())
         .then(data => {
             const accessToken = data.access_token;

@@ -5,7 +5,7 @@ function CompletedGameList({ user, games }) {
 
     if (user.completedGameCount === 0) {
         return (
-            <h3>You must complete a game to leave a review.</h3>
+            <h3>{user.username} has no completed games.</h3>
         )
     }
 

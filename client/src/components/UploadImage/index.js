@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Button } from 'react-bootstrap';
+import { useMutation } from '@apollo/client';
+import { ADD_PROFILE_PIC } from '../../utils/mutations';
 import { uploadProfileImage } from '../../utils/API';
 import { Cloudinary } from '@cloudinary/url-gen';
 
@@ -7,6 +9,7 @@ const UploadImage = ({ file }) => {
     const [fileInputState, setFileInputState] = useState('');
     const [previewSource, setPreviewSource] = useState('');
     const [selectedFile, setSelectedFile] = useState('');
+    const [addProfileImage, { error }] = useMutation(ADD_PROFILE_PIC);
 
     const handleFileInputChange = (e) => {
         const file = e.target.files[0];
@@ -38,7 +41,21 @@ const UploadImage = ({ file }) => {
                 throw new Error('Something went wrong...');
             }
 
-            console.log(response.url);
+            const result = await response.json();
+
+            const image = result.url;
+
+            const setProfileImage = async () => {
+                try {
+                    await addProfileImage({
+                        variables: { image }
+                    });
+                } catch (e) {
+                    console.error(e);
+                }
+            }
+
+            setProfileImage(image);
         } catch (error) {
             console.error(error);
         }

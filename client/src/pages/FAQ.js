@@ -77,6 +77,14 @@ const FAQ = () => {
                     implement. If you have any suggestions, just send a
                     message to James182 and I'll see what I can do!
                 </h4>
+
+                <h2>
+                    Privacy Information
+                </h2>
+
+                <h4>
+                    Profile Images are stored securely on Cloudinary.
+                </h4>
             </div>
         </div>
     );

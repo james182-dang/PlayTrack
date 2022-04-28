@@ -56,34 +56,39 @@ const LoginForm = (props) => {
 
     return (
         <div className='formCenter loginForm'>
+            <div className='myHeader'>
+                <h2>
+                    Login
+                </h2>
+            </div>
             <form className='formFields' onSubmit={handleLoginSubmit}>
                 <div className='formField'>
                     <label className='formFieldLabel' htmlFor='username'>
-                        Username
+                        
                     </label>
                     <input
-                      type='username'
-                      id='username'
-                      className='formFieldInput'
-                      placeholder='Your Username'
-                      name='username'
-                      value={userFormData.username}
-                      onChange={handleInputChange}
+                        type='username'
+                        id='username'
+                        className='formFieldInput'
+                        placeholder='Your Username'
+                        name='username'
+                        value={userFormData.username}
+                        onChange={handleInputChange}
                     />
                 </div>
 
                 <div className='formField'>
                     <label className='formFieldLabel' htmlFor='password'>
-                        Password
+                        
                     </label>
                     <input
-                      type='password'
-                      id='password'
-                      className='formFieldInput'
-                      placeholder='Your Password'
-                      name='password'
-                      value={userFormData.password}
-                      onChange={handleInputChange}
+                        type='password'
+                        id='password'
+                        className='formFieldInput'
+                        placeholder='Your Password'
+                        name='password'
+                        value={userFormData.password}
+                        onChange={handleInputChange}
                     />
                 </div>
 

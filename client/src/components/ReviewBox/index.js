@@ -59,25 +59,27 @@ function ReviewBox(props) {
     };
 
     return (
-        <div className='reviewBox'>
-            <form onSubmit={sendReview}>
-                <div className='reviewBox__input'>
-                    <input
-                        value={reviewText}
-                        onChange={handleChange}
-                        placeholder="Leave your review!"
-                        type='text'
-                        className='reviewInput__area'
-                    />
-                </div>
+        <div>
+            <div className='reviewBox'>
+                <form onSubmit={sendReview}>
+                    <div className='reviewBox__input'>
+                        <input
+                            value={reviewText}
+                            onChange={handleChange}
+                            placeholder="Leave your review!"
+                            type='text'
+                            className='reviewInput__area'
+                        />
+                    </div>
 
-                <div className='review__bottom'>
-                    <span className='counter'>{characterCount}</span>
-                    <Button type='submit' className='reviewBox__button'>
-                        Post Review
-                    </Button>
-                </div>
-            </form>
+                    <div className='review__bottom'>
+                        <span className='counter'>{characterCount}</span>
+                        <Button type='submit' className='reviewBox__button'>
+                            Post Review
+                        </Button>
+                    </div>
+                </form>
+            </div>
         </div>
     );
 }

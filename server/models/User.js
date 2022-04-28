@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
+const dateFormat = require('../utils/dateFormat');
 
 const gameSchema = require('./Game');
 
@@ -21,6 +22,11 @@ const userSchema = new Schema(
             type: String,
             required: true,
             minlength: 8
+        },
+        createdAt: {
+            type: Date,
+            default: Date.now,
+            get: timestamp => dateFormat(timestamp)
         },
         image: {
             type: String
@@ -63,7 +69,8 @@ const userSchema = new Schema(
     },
     {
         toJSON: {
-            virtuals: true
+            virtuals: true,
+            getters: true
         }
     }
 );

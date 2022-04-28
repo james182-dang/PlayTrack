@@ -15,23 +15,27 @@ const PostList = ({ posts }) => {
             {posts &&
               posts.map(post => (
                   <div key={post._id} className='talk-bubble tri-right left-in round'>
-                      <p className='post__date'>
+                      <div className='post__date'>
                           <Link
                             to={`/profile/${post.username}`}
                             style={{ fontWeight: 700 }}
                             className='post__header'
                             style={{ textDecoration: 'none' }}
                           >
-                              {post.userImage}
+                              <Avatar src={post.userImage} />
                               {post.username}
                           </Link>{' '}
-                         {post.createdAt}
-                      </p>
+                      </div>
                       <div>
                           <Link to={`/feed/post/${post._id}`} className='post__body'>
                               <p>{post.postText}</p>
                           </Link>
                       </div>
+
+                      <div className='post__createdAt'>
+                          {post.createdAt}
+                      </div>
+
                       <div className='post__footer'>
                           <div>
                               <ChatBubbleOutline fontSize='small' />{post.commentCount}
