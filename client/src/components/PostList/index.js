@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
-import SportsEsportsOutlinedIcon from '@mui/icons-material/SportsEsportsOutlined';
+import IconButton from '@mui/material/IconButton';
 import {
     ChatBubbleOutline,
     FavoriteBorder,
+    SportsEsportsOutlined,
     Publish
 } from '@mui/icons-material';
 import './style.css';
@@ -18,9 +19,8 @@ const PostList = ({ posts }) => {
                       <div className='post__date'>
                           <Link
                             to={`/profile/${post.username}`}
-                            style={{ fontWeight: 700 }}
+                            style={{ fontWeight: 700, textDecoration: 'none' }}
                             className='post__header'
-                            style={{ textDecoration: 'none' }}
                           >
                               <Avatar src={post.userImage} />
                               {post.username}
@@ -38,13 +38,25 @@ const PostList = ({ posts }) => {
 
                       <div className='post__footer'>
                           <div>
-                              <ChatBubbleOutline fontSize='small' />{post.commentCount}
+                            <IconButton aria-label='comments' style={{ color: 'white' }}>
+                                <ChatBubbleOutline fontSize='small' />{post.commentCount}
+                            </IconButton>
                           </div>
-                          <SportsEsportsOutlinedIcon fontSize='small' />
                           <div>
-                            <FavoriteBorder fontSize='small' />{post.likeCount}
+                            <IconButton aria-label='game' style={{ color: 'white' }}>
+                                <SportsEsportsOutlined fontSize='small' />
+                            </IconButton>
                           </div>
-                          <Publish fontSize='small' />
+                          <div>
+                            <IconButton aria-label="favorite" style={{ color: 'white' }}>
+                                <FavoriteBorder fontSize='small' />{post.likeCount}
+                            </IconButton>
+                          </div>
+                          <div>
+                            <IconButton aria-label='publish' style={{ color: 'white' }}>
+                                <Publish fontSize='small' />
+                            </IconButton>
+                          </div>
                       </div>
                   </div>
               ))}

@@ -2,6 +2,8 @@ import './style.css';
 import { useState } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 import Avatar from '@mui/material/Avatar';
+import IconButton from '@mui/material/IconButton';
+import ButtonBase from '@mui/material/ButtonBase';
 import {
     ChatBubbleOutline,
     FavoriteBorder,
@@ -80,7 +82,9 @@ function Post({ username, verified, text, image, avatar }) {
                 <div className='post__footer'>
                     <ChatBubbleOutline fontSize='small' />
                     <Repeat fontsize='small' />
-                    <FavoriteBorder fontSize='small'/>
+                    <IconButton aria-label="favorite">
+                        <FavoriteBorder fontSize='small' />
+                    </IconButton>
                     <Publish fontSize='small' />
                 </div>
             </div>
