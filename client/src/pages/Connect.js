@@ -11,6 +11,8 @@ const Connect = props => {
 
     const [searchedUsers, setSearchedUsers] = useState([]);
 
+    const [preSearchInput, setPreSearchInput] = useState('');
+
     const [searchInput, setSearchInput] = useState('');
 
     const [search, { loading, data }] = useLazyQuery(QUERY_USER, {
@@ -30,6 +32,8 @@ const Connect = props => {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
 
+        setSearchInput(preSearchInput);
+
         if (!searchInput) {
             return false;
         }
@@ -40,6 +44,7 @@ const Connect = props => {
 
             setSearchedUsers(response.data);
             setSearchInput('');
+            setPreSearchInput('');
             console.log(searchedUsers);
         } catch (err) {
             console.error(err);
@@ -66,6 +71,8 @@ const Connect = props => {
         }
     };
 
+
+
     return (
         <div className='connect'>
             <div className='myHeader'>
@@ -88,8 +95,9 @@ const Connect = props => {
                         <Col xs={12} md={8}>
                             <Form.Control
                                 name='searchInput'
-                                value={searchInput}
-                                onChange={(e) => setSearchInput(e.target.value)}
+                                className='exploreSearch'
+                                value={preSearchInput}
+                                onChange={(e) => setPreSearchInput(e.target.value)}
                                 type='text'
                                 size='lg'
                                 placeholder='Search for users'
