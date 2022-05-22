@@ -65,26 +65,63 @@ function PostBox() {
     };
 
     return (
-        <div className='postBox'>
-            <form onSubmit={sendPost}>
-                <div className='postBox__input'>
-                    <input
-                        value={postText}
-                        onChange={handleChange}
-                        placeholder="Whatcha playin'?"
-                        type='text'
-                        className='input__area'
-                    />
+        <div class="widget-post" aria-labelledby="post-header-title">
+            <div class="widget-post__header">
+                <h2 class="widget-post__title" id="post-header-title">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    New Post
+                </h2>
+            </div>
+            <form id="widget-form" class="widget-post__form" name="form" aria-label="post widget" onSubmit={sendPost}>
+                <div class="widget-post__content">
+                    <label for="post-content" class="sr-only">Share</label>
+                    <textarea name="post" id="post-content" class="widget-post__textarea scroller" placeholder="Whatcha playin'?" value={postText} onChange={handleChange} type='text'></textarea>
                 </div>
-
-                <div className='post__bottom'>
+                <div class="widget-post__options is--hidden" id="stock-options">
+                </div>
+                <div class="widget-post__actions post--actions">
+                    <div class="post-actions__attachments">
+                        <Button type="button" class="btn post-actions__upload attachments--btn">
+                            <label for="attach-game" class="post-actions__label">
+                                <i class="fa fa-upload" aria-hidden="true"></i>
+                                Attach Game
+                            </label>
+                        </Button>
+                        <Button type="button" class="btn post-actions__upload attachments--btn">
+                            <label for="upload-image" class="post-actions__label">
+                                <i class="fa fa-upload" aria-hidden="true"></i>
+                                Attach Image
+                            </label>
+                        </Button>
+                        <input type="file" id="upload-image" accept="image/*" multiple />
+                    </div>
                     <span className='counter'>{characterCount}</span>
-                    <Button type='submit' className='postBox__button'>
-                        Post
-                    </Button>
+                    <div class="post-actions__widget">
+                        <Button class="btn post-actions__publish" type="submit">Post</Button>
+                    </div>
                 </div>
             </form>
         </div>
+        // <div className='postBox'>
+        //     <form onSubmit={sendPost}>
+        //         <div className='postBox__input'>
+        //             <input
+        //                 value={postText}
+        //                 onChange={handleChange}
+        //                 placeholder="Whatcha playin'?"
+        //                 type='text'
+        //                 className='input__area'
+        //             />
+        //         </div>
+
+        //         <div className='post__bottom'>
+        //             <span className='counter'>{characterCount}</span>
+        //             <Button type='submit' className='postBox__button'>
+        //                 Post
+        //             </Button>
+        //         </div>
+        //     </form>
+        // </div>
     );
 }
 

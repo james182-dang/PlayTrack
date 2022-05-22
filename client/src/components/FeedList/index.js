@@ -26,10 +26,6 @@ function FeedList() {
                     <PostList posts={posts} title="What should go here?" />
                 )}
             </div>
-
-            <footer className='feed__footer'>
-                <PostBox />
-            </footer>
         </div>
 
     );
