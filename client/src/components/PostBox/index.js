@@ -102,26 +102,6 @@ function PostBox() {
                 </div>
             </form>
         </div>
-        // <div className='postBox'>
-        //     <form onSubmit={sendPost}>
-        //         <div className='postBox__input'>
-        //             <input
-        //                 value={postText}
-        //                 onChange={handleChange}
-        //                 placeholder="Whatcha playin'?"
-        //                 type='text'
-        //                 className='input__area'
-        //             />
-        //         </div>
-
-        //         <div className='post__bottom'>
-        //             <span className='counter'>{characterCount}</span>
-        //             <Button type='submit' className='postBox__button'>
-        //                 Post
-        //             </Button>
-        //         </div>
-        //     </form>
-        // </div>
     );
 }
 
