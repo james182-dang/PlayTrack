@@ -10,6 +10,7 @@ import { saveGameIds, getSavedGameIds,
 import ReviewList from '../components/ReviewList';
 import ReviewBox from '../components/ReviewBox';
 import Auth from '../utils/auth';
+import { LocalConvenienceStoreOutlined } from '@mui/icons-material';
 
 const GameDetails = props => {
 
@@ -28,11 +29,12 @@ const GameDetails = props => {
     const { id: gameId } = useParams();
 
     const { loading, data } = useQuery(QUERY_GAME_REVIEWS, {
-        variables: { gameId: parseInt(gameId, 10) }
+        variables: { gameId: parseInt(gameId) }
     });
 
     const reviews = data?.reviews || [];
 
+    
     useEffect(() => {
         return () => saveGameIds(savedGameIds);
     }, []);
@@ -141,6 +143,7 @@ const GameDetails = props => {
         }
     };
 
+
     return (
         <div className='gameDetails'>
             {selectedGame.map((game) => {
@@ -198,9 +201,9 @@ const GameDetails = props => {
                                PlayTrack User Reviews for {game.name}
                            </h2>
 
-                           <div className='gameReviews'>
+                            <div>
                                 <ReviewList reviews={reviews} />
-                           </div>
+                            </div>
 
                             <ReviewBox gameId={gameId} gameName={game.name} />
                         </div>

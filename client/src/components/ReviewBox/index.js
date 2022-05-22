@@ -59,27 +59,36 @@ function ReviewBox(props) {
     };
 
     return (
-        <div>
-            <div className='reviewBox'>
-                <form onSubmit={sendReview}>
-                    <div className='reviewBox__input'>
-                        <input
-                            value={reviewText}
-                            onChange={handleChange}
-                            placeholder="Leave your review!"
-                            type='text'
-                            className='reviewInput__area'
-                        />
-                    </div>
-
-                    <div className='review__bottom'>
-                        <span className='counter'>{characterCount}</span>
-                        <Button type='submit' className='reviewBox__button'>
-                            Post Review
-                        </Button>
-                    </div>
-                </form>
+        <div className="widget-post" aria-labelledby="post-header-title">
+            <div className="widget-post__header">
+                <h2 className="widget-post__title" id="post-header-title">
+                    <i className="fa fa-pencil" aria-hidden="true"></i>
+                    New Review
+                </h2>
             </div>
+            <form id="widget-form" className="widget-post__form" name="form" aria-label="post widget" onSubmit={sendReview}>
+                <div className="widget-post__content">
+                    <label htmlFor="post-content" className="sr-only">Share</label>
+                    <textarea name="post" id="post-content" className="widget-post__textarea scroller" placeholder="Whatcha playin'?" value={reviewText} onChange={handleChange} type='text'></textarea>
+                </div>
+                <div className="widget-post__options is--hidden" id="stock-options">
+                </div>
+                <div className="widget-post__actions post--actions">
+                    <div className="post-actions__attachments">
+                        <Button type="button" className="btn post-actions__upload attachments--btn">
+                            <label htmlFor="upload-image" className="post-actions__label">
+                                <i className="fa fa-upload" aria-hidden="true"></i>
+                                Attach Image
+                            </label>
+                        </Button>
+                        <input type="file" id="upload-image" accept="image/*" multiple />
+                    </div>
+                    <span className='counter'>{characterCount}</span>
+                    <div className="post-actions__widget">
+                        <Button className="btn post-actions__publish" type="submit">Post</Button>
+                    </div>
+                </div>
+            </form>
         </div>
     );
 }

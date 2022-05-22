@@ -247,6 +247,18 @@ const resolvers = {
             }
 
             throw new AuthenticationError('You must be logged in to delete a post!');
+        },
+
+        deleteReview: async (parent, { reviewId }, context) => {
+            if (context.user) {
+                const deletedReview = await Review.findByIdAndDelete(
+                    { _id: reviewId }
+                );
+
+                return deletedReview;
+            }
+
+            throw new AuthenticationError('You must be logged in to delete a review!');
         }
     }
 };

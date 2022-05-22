@@ -119,6 +119,7 @@ const typeDefs = gql`
         removeCompletedGame(removeCompletedGame: ID!): User
         addNowPlaying(addNowPlaying: AddNowPlaying!): User
         deletePost(postId: ID!): Post
+        deleteReview(reviewId: ID!): Review
     }
 
     type Auth {

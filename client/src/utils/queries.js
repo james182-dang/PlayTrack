@@ -53,7 +53,7 @@ export const QUERY_POST = gql`
 `;
 
 export const QUERY_GAME = gql`
-    query game($gameId: Int) {
+    query game($gameId: Int!) {
         game(gameId: $gameId) {
             _id
             gameId

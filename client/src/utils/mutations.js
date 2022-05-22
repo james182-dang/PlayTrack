@@ -182,3 +182,11 @@ export const DELETE_POST = gql`
         }
     }
 `;
+
+export const DELETE_REVIEW = gql`
+    mutation deleteReview($reviewId: ID!) {
+        deleteReview(reviewId: $reviewId) {
+            _id
+        }
+    }
+`;

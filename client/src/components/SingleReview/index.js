@@ -1,16 +1,21 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, Redirect } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_REVIEW } from '../../utils/queries';
-import { ADD_COMMENT } from '../../utils/mutations';
+import { ADD_COMMENT, DELETE_REVIEW } from '../../utils/mutations';
 import CommentList from '../../components/CommentList';
 import CommentForm from '../../components/CommentForm';
 import Auth from '../../utils/auth';
+import Button from '@mui/material/Button';
 import './style.css';
 import 'animate.css';
 
 const SingleReview = props => {
 
     const { id: reviewId } = useParams();
+
+    const [deleteReview, { error }] = useMutation(DELETE_REVIEW, {
+        variables: { reviewId: reviewId }
+    });
 
     const { loading, data } = useQuery(QUERY_REVIEW, {
         variables: { id: reviewId }
@@ -20,6 +25,20 @@ const SingleReview = props => {
 
     if (loading) {
         return <div>Loading...</div>
+    }
+
+    const handleDelete = async event => {
+        event.preventDefault();
+
+        try {
+            await deleteReview({
+                variables: { reviewId }
+            });
+        } catch (e) {
+            console.error(e);
+        }
+
+        return <Redirect to='/explore' />;
     }
 
     return (
@@ -43,6 +62,9 @@ const SingleReview = props => {
 
                     <div>
                         <p className='review__body'>{review.reviewText}</p>
+
+                        {Auth.loggedIn() && Auth.getProfile().data.username === review.username
+                        && <Button type='submit' onClick={handleDelete}>Delete Review</Button>}
                     </div>
                 </div>
 
