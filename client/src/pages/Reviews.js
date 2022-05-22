@@ -2,6 +2,7 @@ import { useQuery } from '@apollo/client';
 import { Redirect, useParams } from 'react-router-dom';
 import { QUERY_USER, QUERY_ME, QUERY_COMPLETED_GAMES, QUERY_ME_BASIC } from '../utils/queries';
 import CompletedGameList from '../components/CompletedGameList';
+import ReviewList from '../components/ReviewList';
 import Auth from '../utils/auth';
 import { useEffect } from 'react';
 
@@ -69,7 +70,12 @@ const Reviews = () => {
                 <CompletedGameList user={user} games={user.completedGames} />
             </div>
 
-
+            <div className='centerList'>
+                <div className='yourReviews'>
+                    Your Reviews
+                </div>
+                <ReviewList reviews={user.reviews} />
+            </div>
         </div>
     );
 }

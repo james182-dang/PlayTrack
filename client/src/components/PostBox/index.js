@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 import { ADD_POST } from '../../utils/mutations';
 import { QUERY_POSTS, QUERY_ME } from '../../utils/queries';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 
 function PostBox() {
@@ -65,39 +64,39 @@ function PostBox() {
     };
 
     return (
-        <div class="widget-post" aria-labelledby="post-header-title">
-            <div class="widget-post__header">
-                <h2 class="widget-post__title" id="post-header-title">
-                    <i class="fa fa-pencil" aria-hidden="true"></i>
+        <div className="widget-post" aria-labelledby="post-header-title">
+            <div className="widget-post__header">
+                <h2 className="widget-post__title" id="post-header-title">
+                    <i className="fa fa-pencil" aria-hidden="true"></i>
                     New Post
                 </h2>
             </div>
-            <form id="widget-form" class="widget-post__form" name="form" aria-label="post widget" onSubmit={sendPost}>
-                <div class="widget-post__content">
-                    <label for="post-content" class="sr-only">Share</label>
-                    <textarea name="post" id="post-content" class="widget-post__textarea scroller" placeholder="Whatcha playin'?" value={postText} onChange={handleChange} type='text'></textarea>
+            <form id="widget-form" className="widget-post__form" name="form" aria-label="post widget" onSubmit={sendPost}>
+                <div className="widget-post__content">
+                    <label htmlFor="post-content" className="sr-only">Share</label>
+                    <textarea name="post" id="post-content" className="widget-post__textarea scroller" placeholder="Whatcha playin'?" value={postText} onChange={handleChange} type='text'></textarea>
                 </div>
-                <div class="widget-post__options is--hidden" id="stock-options">
+                <div className="widget-post__options is--hidden" id="stock-options">
                 </div>
-                <div class="widget-post__actions post--actions">
-                    <div class="post-actions__attachments">
-                        <Button type="button" class="btn post-actions__upload attachments--btn">
-                            <label for="attach-game" class="post-actions__label">
-                                <i class="fa fa-upload" aria-hidden="true"></i>
+                <div className="widget-post__actions post--actions">
+                    <div className="post-actions__attachments">
+                        <Button type="button" className="btn post-actions__upload attachments--btn">
+                            <label htmlFor="attach-game" className="post-actions__label">
+                                <i className="fa fa-upload" aria-hidden="true"></i>
                                 Attach Game
                             </label>
                         </Button>
-                        <Button type="button" class="btn post-actions__upload attachments--btn">
-                            <label for="upload-image" class="post-actions__label">
-                                <i class="fa fa-upload" aria-hidden="true"></i>
+                        <Button type="button" className="btn post-actions__upload attachments--btn">
+                            <label htmlFor="upload-image" className="post-actions__label">
+                                <i className="fa fa-upload" aria-hidden="true"></i>
                                 Attach Image
                             </label>
                         </Button>
                         <input type="file" id="upload-image" accept="image/*" multiple />
                     </div>
                     <span className='counter'>{characterCount}</span>
-                    <div class="post-actions__widget">
-                        <Button class="btn post-actions__publish" type="submit">Post</Button>
+                    <div className="post-actions__widget">
+                        <Button className="btn post-actions__publish" type="submit">Post</Button>
                     </div>
                 </div>
             </form>

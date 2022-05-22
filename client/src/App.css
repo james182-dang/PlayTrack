@@ -199,6 +199,12 @@ a {
   width: 50vw;
 }
 
+.yourReviews {
+  text-align: center;
+  color: white;
+  font-size: 26px;
+}
+
 /* Profile CSS */
 
 .profile {
