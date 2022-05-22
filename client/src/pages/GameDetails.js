@@ -190,7 +190,7 @@ const GameDetails = props => {
                         </div>
 
                         <div className='summary'>
-                            Summary: {game.summary}
+                            {game.summary}
                         </div>
 
                         <div className='reviewsContainer'>
