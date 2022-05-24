@@ -1,4 +1,4 @@
-const { User, Post, Review } = require('../models');
+const { User, Post, Review, Comment } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
@@ -259,6 +259,16 @@ const resolvers = {
             }
 
             throw new AuthenticationError('You must be logged in to delete a review!');
+        },
+
+        deleteComment: async (parent, { commentId }, context) => {
+            if (context.user) {
+                const deletedComment = await Comment.findByIdAndDelete(
+                    { _id: commentId }
+                );
+
+                return deletedComment;
+            }
         }
     }
 };

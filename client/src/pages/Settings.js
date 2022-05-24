@@ -1,10 +1,15 @@
 import { useQuery, useMutation } from '@apollo/client';
+import { useState } from 'react';
 import { QUERY_ME } from '../utils/queries';
 import { ADD_PROFILE_PIC, ADD_BIO } from '../utils/mutations';
 import UploadImage from '../components/UploadImage';
-import Auth from '../utils/auth';
+import BioForm from '../components/BioForm';
 
 const Settings = () => {
+
+    const [characterCount, setCharacterCount] = useState(0);
+    const [bioText, setBioText] = useState('');
+    const [bioFormData, setBioFormData] = useState({ bio: '' });
 
     const { loading, data } = useQuery(QUERY_ME);
 
@@ -48,7 +53,35 @@ const Settings = () => {
         }
     });
 
+    const sendBio = async event => {
+        event.preventDefault();
+
+        const _id = user._id;
+
+        const bio = bioText;
+
+        try {
+            await addBio({
+                variables: { _id, bio }
+            });
+        } catch (e) {
+            console.error(e);
+        }
+    };
+
+    const handleChange = event => {
+
+        const { name, value } = event.target;
+        setBioFormData({ ...bioFormData, [name]: value});
+
+        if (event.target.value.length <= 500) {
+            setBioText(event.target.value);
+            setCharacterCount(event.target.value.length);
+        }
+    };
+
     const user = data?.me || {};
+
 
     if (!user?.username) {
         return (
@@ -81,6 +114,10 @@ const Settings = () => {
 
                 <h5>
                     <UploadImage />
+                </h5>
+
+                <h5>
+                    <BioForm />
                 </h5>
             </div>
         </div>

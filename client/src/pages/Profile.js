@@ -68,7 +68,9 @@ const Profile = () => {
                         </h4>
 
                         <h4>
-                            Joined {user.createdAt}!
+                            {!loading && user.createdAt
+                              ? `Joined ${user.createdAt}!`
+                              : `${user.username} has been here since the beginning!`}
                         </h4>
                     </div>
                 </div>

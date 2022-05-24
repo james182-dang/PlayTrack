@@ -41,22 +41,16 @@ const PostList = ({ posts }) => {
 
     const handleLike = async (postId) => {
 
-        const postToLike = postId;
-
-        const token = Auth.loggedIn() ? Auth.getToken() : null;
-
-        if (!token) {
-            return false;
-        }
-
         try {
-            const { data } = await addLike({
-                variables: { addLike: { postId: posts._id, username: user.username } },
-            });
 
-            console.log(data);
-        } catch (err) {
-            console.error(err);
+            const username = user.username;
+
+
+            await addLike({
+                variables: { username, postId }
+            });
+        } catch (e) {
+            console.error(e);
         }
     };
 
@@ -90,9 +84,9 @@ const PostList = ({ posts }) => {
                               <Link
                                   to={`/feed/post/${post._id}`}
                               >
-                                  <IconButton aria-label='comments' style={{ color: 'white' }}>
-                                      <ChatBubbleOutline fontSize='small' />{post.commentCount}
-                                  </IconButton>
+                                <IconButton aria-label='comments' style={{ color: 'white' }}>
+                                    <ChatBubbleOutline fontSize='small' />{post.commentCount}
+                                </IconButton>
                               </Link>
                           </div>
                           <div>

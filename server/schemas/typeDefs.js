@@ -120,6 +120,7 @@ const typeDefs = gql`
         addNowPlaying(addNowPlaying: AddNowPlaying!): User
         deletePost(postId: ID!): Post
         deleteReview(reviewId: ID!): Review
+        deleteComment(commentId: ID!): Comment
     }
 
     type Auth {
