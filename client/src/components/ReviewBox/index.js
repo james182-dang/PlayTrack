@@ -69,7 +69,7 @@ function ReviewBox(props) {
             <form id="widget-form" className="widget-post__form" name="form" aria-label="post widget" onSubmit={sendReview}>
                 <div className="widget-post__content">
                     <label htmlFor="post-content" className="sr-only">Share</label>
-                    <textarea name="post" id="post-content" className="widget-post__textarea scroller" placeholder="Whatcha playin'?" value={reviewText} onChange={handleChange} type='text'></textarea>
+                    <textarea name="post" id="post-content" className="widget-post__textarea scroller" placeholder="How was the game?" value={reviewText} onChange={handleChange} type='text'></textarea>
                 </div>
                 <div className="widget-post__options is--hidden" id="stock-options">
                 </div>

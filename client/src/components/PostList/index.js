@@ -41,16 +41,26 @@ const PostList = ({ posts }) => {
 
     const handleLike = async (postId) => {
 
+        const postToLike = postId;
+
+        const username = user.username;
+
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+        if (!token) {
+            return false;
+        }
+
         try {
-
-            const username = user.username;
-
-
-            await addLike({
-                variables: { username, postId }
+            const { data } = await addLike({
+                variables: { addLike: { postId, username } },
             });
-        } catch (e) {
-            console.error(e);
+
+            console.log(data);
+
+
+        } catch (err) {
+            console.error(err);
         }
     };
 

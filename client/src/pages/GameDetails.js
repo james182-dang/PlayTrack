@@ -122,7 +122,7 @@ const GameDetails = props => {
 
     const handleAddNowPlaying = async (gameId) => {
 
-        const gameNowPlaying = selectedGame.find((game) => game.gameId === gameId);
+        const gameNowPlaying = gameToSave.find((game) => game.gameId === gameId);
 
         const token = Auth.loggedIn() ? Auth.getToken() : null;
 
