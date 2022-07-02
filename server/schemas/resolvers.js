@@ -211,7 +211,7 @@ const resolvers = {
 
         addNowPlaying: async (parent, { addNowPlaying }, context) => {
             if (context.user) {
-                const updatedUser = await User.findOneAndUpdate(
+                const updatedUser = await User.findByIdAndUpdate(
                     { _id: context.user._id },
                     { $set: { nowPlaying: addNowPlaying } },
                     { new: true }
