@@ -54,6 +54,7 @@ const typeDefs = gql`
 
     input AddNowPlaying {
         gameId: Int
+        name: String
     }
 
     type Post {

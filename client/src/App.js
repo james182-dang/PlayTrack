@@ -14,6 +14,7 @@ import Settings from './pages/Settings';
 import FAQ from './pages/FAQ';
 import Reviews from './pages/Reviews';
 import Profile from './pages/Profile';
+import Message from './pages/Message';
 import Widgets from './components/Widgets';
 import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
@@ -56,6 +57,7 @@ const App = () => {
                 <Route exact path='/explore/game/:id' component={GameDetails} />
                 <Route exact path='/connect' component={Connect} />
                 <Route exact path='/messages' component={Messages} />
+                <Route exact path='/messages/:username?' component={Message} />
                 <Route exact path='/profile' component={Profile} />
                 <Route exact path='/profile/:username?' component={Profile} />
                 <Route exact path='/login' component={LoginForm} />

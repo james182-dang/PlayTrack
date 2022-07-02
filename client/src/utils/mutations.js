@@ -158,6 +158,7 @@ export const ADD_NOW_PLAYING = gql`
             _id
             nowPlaying {
                 gameId
+                name
             }
         }
     }

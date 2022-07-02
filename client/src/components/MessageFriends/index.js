@@ -9,6 +9,7 @@ const MessageFriends = ({ friends }) => {
 
     useEffect(() => {
         setCurrentUser(currentUser);
+        console.log(currentUser.id);
     }, [])
 
     const handleClick = async (userId) => {
@@ -17,7 +18,12 @@ const MessageFriends = ({ friends }) => {
 
         Talk.ready
           .then(() => {
-              const me = new Talk.User(currentUser);
+              const me = new Talk.User({
+                id: currentUser.id,
+                name: currentUser.username,
+                role: currentUser.role,
+                email: null
+              });
               const other = new Talk.User(user)
 
               // Create a talk session if one does not exist

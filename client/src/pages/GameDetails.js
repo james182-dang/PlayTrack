@@ -132,7 +132,7 @@ const GameDetails = props => {
 
         try {
             const { data } = await addNowPlaying({
-                variables: { addNowPlaying: { gameId } },
+                variables: { addNowPlaying: { ...gameNowPlaying } },
             });
 
             console.log(data);
